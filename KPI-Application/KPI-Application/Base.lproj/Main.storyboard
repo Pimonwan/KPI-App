@@ -57,7 +57,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="g6f-ma-Eyx" kind="show" id="01R-PF-1oQ"/>
+                                            <segue destination="Ale-PC-s2t" kind="show" id="ZHH-9g-tFx"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -89,6 +89,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyY-sR-cOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1067" y="76"/>
+        </scene>
+        <!--Scoring_Mock-->
+        <scene sceneID="G1J-xn-fGt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Scoring_Mock" id="Ale-PC-s2t" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-eH-pmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1461" y="69"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jcc-Uk-1Ul">
