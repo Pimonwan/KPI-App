@@ -58,7 +58,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="g6f-ma-Eyx" kind="show" id="01R-PF-1oQ"/>
+                                            <segue destination="OZU-B2-yxP" kind="show" id="lnW-4d-7dj"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -74,14 +74,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kzk-kE-pEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071" y="-363"/>
-        </scene>
-        <!--Scoring-->
-        <scene sceneID="Q1E-iA-95q">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Scoring" storyboardName="Scoring" id="g6f-ma-Eyx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OyY-sR-cOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1067" y="76"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZJy-Ud-lLL">
@@ -135,7 +127,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-KN-FLt" userLabel="AvataImage">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cmdev_icon" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-KN-FLt" userLabel="AvataImage">
                                                             <rect key="frame" x="8" y="20" width="63" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -240,6 +232,60 @@
             </objects>
             <point key="canvasLocation" x="2125.5999999999999" y="-364.7676161919041"/>
         </scene>
+        <!--Scoring-->
+        <scene sceneID="QRB-oB-zSP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZh-1c-L0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Gmy-i0-Tie" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wCo-BA-cbv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OYr-a6-V2h">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OYr-a6-V2h" id="gQ5-I8-7xP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="755-xr-ZSg">
+                                            <rect key="frame" x="16" y="11" width="43" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gmy-i0-Tie" id="9l9-Ra-4pU"/>
+                            <outlet property="delegate" destination="Gmy-i0-Tie" id="3zC-2J-66w"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Scoring" id="6lq-1K-bLs"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1693" y="622"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tLp-au-OuR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwk-hS-b11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="OZU-B2-yxP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8rS-xW-Nnl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Gmy-i0-Tie" kind="relationship" relationship="rootViewController" id="5X0-F0-V75"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="744" y="622"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jcc-Uk-1Ul">
             <objects>
@@ -258,6 +304,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar" width="256" height="256"/>
+        <image name="cmdev_icon" width="16" height="16"/>
     </resources>
 </document>
