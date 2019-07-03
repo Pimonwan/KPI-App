@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8C21417B22CCB3F1002F9D25 /* UserHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C21417A22CCB3F1002F9D25 /* UserHistory.storyboard */; };
 		8C21417D22CCC01D002F9D25 /* UserHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21417C22CCC01D002F9D25 /* UserHistoryViewController.swift */; };
+		8C21418022CCC59E002F9D25 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21417F22CCC59E002F9D25 /* FoldingCell.swift */; };
+		8CCC7B5822CCFC2700DBD67A /* HomeUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC7B5722CCFC2700DBD67A /* HomeUserTableViewCell.swift */; };
 		A9B9D4D301A3F7A1A6B6B105 /* Pods_KPI_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B86F7A6257F92D1C4E16044 /* Pods_KPI_Application.framework */; };
 		AD05857222CBACC000B36010 /* Scoring.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD05857122CBACC000B36010 /* Scoring.storyboard */; };
 		AD05857422CBAD6700B36010 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857322CBAD6700B36010 /* UserViewController.swift */; };
@@ -28,6 +30,8 @@
 		754D4C9245F031EB764EFF5C /* Pods-KPI-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPI-Application.release.xcconfig"; path = "Target Support Files/Pods-KPI-Application/Pods-KPI-Application.release.xcconfig"; sourceTree = "<group>"; };
 		8C21417A22CCB3F1002F9D25 /* UserHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserHistory.storyboard; sourceTree = "<group>"; };
 		8C21417C22CCC01D002F9D25 /* UserHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryViewController.swift; sourceTree = "<group>"; };
+		8C21417F22CCC59E002F9D25 /* FoldingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
+		8CCC7B5722CCFC2700DBD67A /* HomeUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUserTableViewCell.swift; sourceTree = "<group>"; };
 		AD05857122CBACC000B36010 /* Scoring.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scoring.storyboard; sourceTree = "<group>"; };
 		AD05857322CBAD6700B36010 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -62,6 +66,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8C21417E22CCC576002F9D25 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8C21417F22CCC59E002F9D25 /* FoldingCell.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8CCC7B5922CCFDDF00DBD67A /* UserCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCustomCell;
+			sourceTree = "<group>";
+		};
 		AD05857B22CBC60200B36010 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +102,10 @@
 		AD05857D22CBC61E00B36010 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8CCC7B5922CCFDDF00DBD67A /* UserCustomCell */,
 				AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */,
 				AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */,
+				8CCC7B5722CCFC2700DBD67A /* HomeUserTableViewCell.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -110,6 +131,7 @@
 		ADEAD25922CA5456005FC1FA /* KPI-Application */ = {
 			isa = PBXGroup;
 			children = (
+				8C21417E22CCC576002F9D25 /* Library */,
 				AD05857C22CBC60E00B36010 /* Views */,
 				AD05857B22CBC60200B36010 /* Controllers */,
 				ADEAD25A22CA5456005FC1FA /* AppDelegate.swift */,
@@ -256,7 +278,9 @@
 				ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewController.swift in Sources */,
 				AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */,
+				8CCC7B5822CCFC2700DBD67A /* HomeUserTableViewCell.swift in Sources */,
 				AD05857622CBAD9B00B36010 /* UserTableViewCell.swift in Sources */,
+				8C21418022CCC59E002F9D25 /* FoldingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
