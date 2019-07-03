@@ -28,11 +28,17 @@ extension ScoringViewController: UITextViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoringTableCell") as! ScoringTableViewCell
+    
         cell.mTopic.text = "Build the Product"
         cell.mSubTopic1.text = "Unit Test Converage"
         cell.mSubTopic2.text = "Automate Testing"
         cell.mSubTopic3.text = "On time delivery (story point deviation)"
         cell.mSubTopic4.text = "Product Demo"
+        
+         cell.mSubTopic3.numberOfLines = 0
+        cell.mSubTopic3.preferredMaxLayoutWidth = 700
+        cell.mSubTopic3.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.mSubTopic3.sizeToFit()
         
         return cell
 //        @IBOutlet weak var mName : UILabel!
