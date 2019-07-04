@@ -599,6 +599,16 @@
                         <outlet property="actual6" destination="koP-ck-12U" id="HVJ-f3-GST"/>
                         <outlet property="actual7" destination="e1c-YB-pib" id="ZcS-AH-eVL"/>
                         <outlet property="actual8" destination="B0C-qb-MCL" id="i0G-5a-7Us"/>
+                        <outlet property="score1" destination="PqY-6r-HHB" id="Qx7-w6-8jY"/>
+                        <outlet property="score2" destination="Ckt-7D-OpC" id="PaI-Vn-UpZ"/>
+                        <outlet property="score3" destination="mrQ-yI-Hwi" id="h9T-fZ-Tvb"/>
+                        <outlet property="score4" destination="J3U-Et-kff" id="EZk-r1-uPT"/>
+                        <outlet property="score5" destination="Vjs-RZ-Deo" id="I8F-QX-gJd"/>
+                        <outlet property="score6" destination="t3t-EH-wqi" id="rF4-Zz-J1f"/>
+                        <outlet property="score7" destination="UEr-Cg-T9x" id="I7b-N3-Hhz"/>
+                        <outlet property="score8" destination="Bu5-eg-1Ri" id="xft-0s-dyu"/>
+                        <outlet property="ta" destination="2VS-p4-5Si" id="3mt-wL-Df3"/>
+                        <outlet property="ts" destination="g2x-I0-9go" id="Dbq-lb-lKP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qsx-sx-ZK9" userLabel="First Responder" sceneMemberID="firstResponder"/>

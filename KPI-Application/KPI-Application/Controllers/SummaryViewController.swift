@@ -19,7 +19,19 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var actual6 : UILabel!
     @IBOutlet weak var actual7 : UILabel!
     @IBOutlet weak var actual8 : UILabel!
+    
+    @IBOutlet weak var score1 : UILabel!
+    @IBOutlet weak var score2 : UILabel!
+    @IBOutlet weak var score3 : UILabel!
+    @IBOutlet weak var score4 : UILabel!
+    @IBOutlet weak var score5 : UILabel!
+    @IBOutlet weak var score6 : UILabel!
+    @IBOutlet weak var score7 : UILabel!
+    @IBOutlet weak var score8 : UILabel!
 
+    @IBOutlet weak var ta : UILabel!
+    @IBOutlet weak var ts : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("from summary : \(self.mes)")
@@ -30,7 +42,7 @@ class SummaryViewController: UIViewController {
         
         let s = self.mes[0]
         print("s : \(s)")
-        self.actual1.text = "12345678"
+        self.actual1.text = self.mes[0]
         self.actual2.text = self.mes[1]
         self.actual3.text = self.mes[2]
         self.actual4.text = self.mes[3]
@@ -43,16 +55,81 @@ class SummaryViewController: UIViewController {
     }
     
     func calSum(actual : [String]){
-        let num1 = Int(actual[0])!
-        let num2 = Int(actual[1])!
-        let num3 = Int(actual[2])!
-        let num4 = Int(actual[3])!
-        let num5 = Int(actual[4])!
-        let num6 = Int(actual[5])!
-        let num7 = Int(actual[6])!
-        let num8 = Int(actual[7])!
+//        let num1 = Int(actual[0])!
+//        let num2 = Int(actual[1])!
+//        let num3 = Int(actual[2])!
+//        let num4 = Int(actual[3])!
+//        let num5 = Int(actual[4])!
+//        let num6 = Int(actual[5])!
+//        let num7 = Int(actual[6])!
+//        let num8 = Int(actual[7])!
         
-        print(num1+num2+num3+num4+num5+num6+num7+num8)
+        var weight = [20,10,10,10,15,15,10,10]
+        var rate1 = [20,1,1,1,50,50,9,1]
+        var rate2 = [40,4,4,4,60,60,7,4]
+        var rate3 = [60,6,6,6,70,70,5,6]
+        var rate4 = [80,8,8,8,80,80,3,8]
+        var totalActual: Double = 0
+        var kpirate: Double = 0
+        
+    
+    
+        
+        var score:[Int] = []
+        
+        for i in 0..<actual.count {
+            //print(i)
+            var num = Int(actual[i])!
+            if i == 6{
+                if num>=rate1[i]{
+                    score.append(1)
+                }else if num>=rate2[i] {
+                    score.append(2)
+                }else if num>=rate3[i] {
+                    score.append(3)
+                }else if num>=rate4[i] {
+                    score.append(4)
+                }else{
+                    score.append(5)
+                }
+            }else{
+                if num<=rate1[i]{
+                    score.append(1)
+                }else if num<=rate2[i] {
+                    score.append(2)
+                }else if num<=rate3[i] {
+                    score.append(3)
+                }else if num<=rate4[i] {
+                    score.append(4)
+                }else{
+                    score.append(5)
+                }
+            }
+            
+            
+            
+        
+        
+            print(score[i])
+            //print(Double(score[i]*weight[i])
+            totalActual += Double(score[i]*weight[i]/5)
+            print(totalActual)
+        
+        //print(num1+num2+num3+num4+num5+num6+num7+num8)
+        }
+        kpirate = totalActual*5/100
+        
+        self.score1.text = String(score[0])
+        self.score2.text = String(score[1])
+        self.score3.text = String(score[2])
+        self.score4.text = String(score[3])
+        self.score5.text = String(score[4])
+        self.score6.text = String(score[5])
+        self.score7.text = String(score[6])
+        self.score8.text = String(score[7])
+        
+        self.ta.text = String(totalActual)
+        self.ts.text = String(kpirate)
         
     }
 }
