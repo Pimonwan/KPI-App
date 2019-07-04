@@ -322,6 +322,7 @@
                         <outlet property="mInput7" destination="5p1-3l-1Wc" id="9tX-pV-qvj"/>
                         <outlet property="mInput8" destination="Adg-cO-Wgk" id="u55-8j-i46"/>
                         <outlet property="mName" destination="Mp1-u8-tfN" id="YtT-sf-9lS"/>
+                        <segue destination="M3w-X4-17I" kind="show" identifier="summary_kpi" id="PZW-Ad-b5A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgk-9z-KAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -590,7 +591,7 @@
                         <viewLayoutGuide key="safeArea" id="F9D-HR-GVg"/>
                     </view>
                     <connections>
-                        <outlet property="actual1" destination="1o8-qx-kWy" id="522-9u-Xqt"/>
+                        <outlet property="actual1" destination="1o8-qx-kWy" id="WLH-YW-scr"/>
                         <outlet property="actual2" destination="hdw-Ps-SpJ" id="oUN-kI-f61"/>
                         <outlet property="actual3" destination="xZ3-O8-xQR" id="6Lq-Lb-6Qb"/>
                         <outlet property="actual4" destination="99R-oX-WXZ" id="JmQ-vP-Zs4"/>

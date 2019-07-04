@@ -23,16 +23,21 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("from summary : \(self.mes)")
-        print("test")
+        print(self.mes[0])
         
-//        self.actual1.text = self.mes[0]
-//        self.actual2.text = self.mes[1]
-//        self.actual3.text = self.mes[2]
-//        self.actual4.text = self.mes[3]
-//        self.actual5.text = self.mes[4]
-//        self.actual6.text = self.mes[5]
-//        self.actual7.text = self.mes[6]
-//        self.actual8.text = self.mes[7]
+        let t = type(of: mes[0])
+        print("'type '\(t)'")
+        
+        let s = self.mes[0]
+        print("s : \(s)")
+        self.actual1.text = "12345678"
+        self.actual2.text = self.mes[1]
+        self.actual3.text = self.mes[2]
+        self.actual4.text = self.mes[3]
+        self.actual5.text = self.mes[4]
+        self.actual6.text = self.mes[5]
+        self.actual7.text = self.mes[6]
+        self.actual8.text = self.mes[7]
         
         calSum(actual: self.mes)
     }

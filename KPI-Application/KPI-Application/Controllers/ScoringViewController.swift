@@ -50,11 +50,20 @@ class ScoringViewController: UIViewController {
         print(input8)
         
         let arr = [input1, input2, input3, input4, input5, input6, input7, input8]
+//
+//        let vc = SummaryViewController()
+//        vc.mes = arr as! [String]
+    
         
-        let vc = SummaryViewController()
-        vc.mes = arr as! [String]
+         self.performSegue(withIdentifier: "summary_kpi", sender: arr)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let targetVC = segue.destination as? SummaryViewController{
+            targetVC.mes = sender as! [String]
+        }
         
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func showPopup(_ sender: AnyObject) {
