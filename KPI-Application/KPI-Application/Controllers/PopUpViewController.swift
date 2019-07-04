@@ -13,7 +13,7 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showAnimate()
-        // Do any additional setup after loading the view.
+         self.navigationItem.backBarButtonItem=nil;
     }
     
     @IBAction func closePopUp(sender: AnyObject) {

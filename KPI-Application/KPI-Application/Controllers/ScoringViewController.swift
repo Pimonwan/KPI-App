@@ -11,6 +11,7 @@ import UIKit
 class ScoringViewController: UIViewController {
     
 //    @IBOutlet weak var mTableView : UITableView!
+    var name : String = ""
     @IBOutlet weak var mName : UILabel!
     @IBOutlet weak var mID : UILabel!
     @IBOutlet weak var mInput1 : UITextField!
@@ -24,7 +25,8 @@ class ScoringViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mName.text = "Name : Pimonwan  Sutmee"
+         self.title = "Scoring Page"
+        self.mName.text = self.name
         self.mID.text = "ID : 89503"
         
       
@@ -40,22 +42,48 @@ class ScoringViewController: UIViewController {
         let input7 = self.mInput7.text
         let input8 = self.mInput8.text
         
-        print(input1)
-        print(input2)
-        print(input3)
-        print(input4)
-        print(input5)
-        print(input6)
-        print(input7)
-        print(input8)
-        
-        let arr = [input1, input2, input3, input4, input5, input6, input7, input8]
-//
-//        let vc = SummaryViewController()
-//        vc.mes = arr as! [String]
-    
-        
-         self.performSegue(withIdentifier: "summary_kpi", sender: arr)
+        if input1?.isEmpty ?? true || input2?.isEmpty ?? true || input3?.isEmpty ?? true || input4?.isEmpty ?? true || input5?.isEmpty ?? true || input6?.isEmpty ?? true || input7?.isEmpty ?? true || input8?.isEmpty ?? true{
+            
+            let alert = UIAlertController(title: "Can not submit", message: "Please enter all of score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else if Int(input1!)! > 100 || Int(input1!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input2!)! > 10 || Int(input2!)! < 0  {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input3!)! > 10 || Int(input3!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input4!)! > 10 || Int(input4!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input5!)! > 100 || Int(input5!)! < 0  {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input6!)! > 100 || Int(input6!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input7!)! > 10 || Int(input7!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else if Int(input8!)! > 10 || Int(input8!)! < 0 {
+            let alert = UIAlertController(title: "Wrong Score", message: "Some Score doesn't in range of full score.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let arr = [input1, input2, input3, input4, input5, input6, input7, input8]
+            self.performSegue(withIdentifier: "summary_kpi", sender: arr)
+        }
     }
     
     
@@ -63,7 +91,6 @@ class ScoringViewController: UIViewController {
         if let targetVC = segue.destination as? SummaryViewController{
             targetVC.mes = sender as! [String]
         }
-        
     }
     
     @IBAction func showPopup(_ sender: AnyObject) {

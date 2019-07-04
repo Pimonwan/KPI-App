@@ -34,14 +34,7 @@ class SummaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("from summary : \(self.mes)")
-        print(self.mes[0])
-        
-        let t = type(of: mes[0])
-        print("'type '\(t)'")
-        
-        let s = self.mes[0]
-        print("s : \(s)")
+         self.title = "Summary"
         self.actual1.text = self.mes[0]
         self.actual2.text = self.mes[1]
         self.actual3.text = self.mes[2]
@@ -55,15 +48,6 @@ class SummaryViewController: UIViewController {
     }
     
     func calSum(actual : [String]){
-//        let num1 = Int(actual[0])!
-//        let num2 = Int(actual[1])!
-//        let num3 = Int(actual[2])!
-//        let num4 = Int(actual[3])!
-//        let num5 = Int(actual[4])!
-//        let num6 = Int(actual[5])!
-//        let num7 = Int(actual[6])!
-//        let num8 = Int(actual[7])!
-        
         var weight = [20,10,10,10,15,15,10,10]
         var rate1 = [20,1,1,1,50,50,9,1]
         var rate2 = [40,4,4,4,60,60,7,4]
@@ -72,13 +56,9 @@ class SummaryViewController: UIViewController {
         var totalActual: Double = 0
         var kpirate: Double = 0
         
-    
-    
-        
         var score:[Int] = []
         
         for i in 0..<actual.count {
-            //print(i)
             var num = Int(actual[i])!
             if i == 6{
                 if num>=rate1[i]{
@@ -106,16 +86,7 @@ class SummaryViewController: UIViewController {
                 }
             }
             
-            
-            
-        
-        
-            print(score[i])
-            //print(Double(score[i]*weight[i])
             totalActual += Double(score[i]*weight[i]/5)
-            print(totalActual)
-        
-        //print(num1+num2+num3+num4+num5+num6+num7+num8)
         }
         kpirate = totalActual*5/100
         
@@ -132,4 +103,20 @@ class SummaryViewController: UIViewController {
         self.ts.text = String(kpirate)
         
     }
+    
+    @IBAction func onClickSaveButton(){
+//        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToViewController(UserViewController, animated: true)
+        print("click")
+        self.performSegue(withIdentifier: "teste", sender: self)
+//        self.navigationController?.popToViewController(UserViewController.init(), animated: true)
+//        self.navigationController?.popToViewController(UserViewController(), animated: true)
+    }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let targetVC = segue.destination as? UserViewController{
+//
+//        }
+//    }
 }
