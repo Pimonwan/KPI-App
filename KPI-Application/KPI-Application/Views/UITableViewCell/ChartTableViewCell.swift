@@ -1,18 +1,15 @@
 //
-//  HomeTableViewCell.swift
+//  ChartTableViewCell.swift
 //  KPI-Application
 //
-//  Created by Thammanoon Wethanyaporn on 3/7/2562 BE.
+//  Created by Thammanoon Wethanyaporn on 4/7/2562 BE.
 //  Copyright © 2562 พิมลวรรณ สุดมี. All rights reserved.
 //
 
 import UIKit
 
-class HomeUserTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var Actual: UILabel!
-    @IBOutlet weak var Rating: UILabel!
-    @IBOutlet weak var Year: UILabel!
+class ChartTableViewCell: UITableViewCell {
+    @IBOutlet weak var mChart: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
