@@ -56,6 +56,16 @@ class ScoringViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func showPopup(_ sender: AnyObject) {
+        let popOverVC = self.storyboard!.instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        
+        self.addChild(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParent: self)
+        
+    }
 }
 
 //extension ScoringViewController: UITextViewDelegate, UITableViewDataSource{

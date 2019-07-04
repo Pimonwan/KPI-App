@@ -19,6 +19,7 @@
 		AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */; };
 		AD5DB79422CCEEEC007B4E46 /* Scoring_Mock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */; };
 		AD76E16122CD5E7D0024F139 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76E16022CD5E7D0024F139 /* SummaryViewController.swift */; };
+		AD76E16322CD6D550024F139 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76E16222CD6D550024F139 /* PopUpViewController.swift */; };
 		ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEAD25A22CA5456005FC1FA /* AppDelegate.swift */; };
 		ADEAD25D22CA5456005FC1FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEAD25C22CA5456005FC1FA /* ViewController.swift */; };
 		ADEAD26022CA5456005FC1FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD25E22CA5456005FC1FA /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTableViewCell.swift; sourceTree = "<group>"; };
 		AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scoring_Mock.storyboard; sourceTree = "<group>"; };
 		AD76E16022CD5E7D0024F139 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		AD76E16222CD6D550024F139 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		ADEAD25722CA5456005FC1FA /* KPI-Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KPI-Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEAD25A22CA5456005FC1FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADEAD25C22CA5456005FC1FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				AD05857322CBAD6700B36010 /* UserViewController.swift */,
 				8C21417C22CCC01D002F9D25 /* UserHistoryViewController.swift */,
 				AD76E16022CD5E7D0024F139 /* SummaryViewController.swift */,
+				AD76E16222CD6D550024F139 /* PopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				AD05857422CBAD6700B36010 /* UserViewController.swift in Sources */,
 				ADEAD25D22CA5456005FC1FA /* ViewController.swift in Sources */,
 				8C21417D22CCC01D002F9D25 /* UserHistoryViewController.swift in Sources */,
+				AD76E16322CD6D550024F139 /* PopUpViewController.swift in Sources */,
 				AD76E16122CD5E7D0024F139 /* SummaryViewController.swift in Sources */,
 				ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewController.swift in Sources */,
