@@ -2,24 +2,23 @@ import UIKit
 
 class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    @IBOutlet weak var mName : UILabel!
-    @IBOutlet weak var mID : UILabel!
-    @IBOutlet weak var mAvataImage : UILabel!
-    @IBOutlet weak var HomeTableView: UITableView!
+
+    @IBOutlet weak var mTableView: UITableView!
     
-    
-var yearArr = ["2016","2017","2018"]
+    var yearArr = ["2016","2017","2018"]
+    var name = "Thammanoon Wethanyaporn"
+    var id = "12345"
     
     var SelectedIndex = -1
     var isCoolapce = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.mName.text = "Thammanoon Wethanyaporn"
-        self.mID.text = "00000"
         
-        HomeTableView.estimatedRowHeight = 301
-        HomeTableView.rowHeight = UITableView.automaticDimension
+        //        self.mName.text = "Thammanoon Wethanyaporn"
+        //        self.mID.text = "00000"
+        
+        mTableView.estimatedRowHeight = 301
+        mTableView.rowHeight = UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.SelectedIndex == indexPath.row && isCoolapce == true
@@ -33,9 +32,12 @@ var yearArr = ["2016","2017","2018"]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return yearArr.count
     }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeusertableViewCell") as! HomeUserTableViewCell
-        cell.Year.text! = yearArr[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
+        cell.mYear.text! = yearArr[indexPath.row]
         //12.19
         
         return cell
