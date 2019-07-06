@@ -1,15 +1,12 @@
-//
-//  ChartTableViewCell.swift
-//  KPI-Application
-//
-//  Created by Thammanoon Wethanyaporn on 4/7/2562 BE.
-//  Copyright © 2562 พิมลวรรณ สุดมี. All rights reserved.
-//
-
 import UIKit
+import Charts
+
+
 
 class ChartTableViewCell: UITableViewCell {
-    @IBOutlet weak var mChart: UIView!
+
+
+    @IBOutlet weak var mLineChartView: LineChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
