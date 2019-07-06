@@ -6,6 +6,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     @IBOutlet weak var mTableView: UITableView!
     
     var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
+    var actualscoreArr = ["19","18","17","16","15","14","13","12"]
+    var kpirateArr = ["29","28","27","26","25","24","23","22"]
     var name = "Thammanoon Wethanyaporn"
     var id = "12345"
     
@@ -13,8 +15,6 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     var isCoolapce = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        mTableView.estimatedRowHeight = 301
-        //        mTableView.rowHeight = UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -32,7 +32,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return yearArr.count
+        let year = yearArr.count
+        let row = 2 + year
+        return row
     }
     
     
@@ -40,6 +42,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         let row = indexPath.row
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailViewCell") as! UserDetailTableViewCell
+            cell.mName.text! = name
+            cell.mID.text! = id
             return cell
         }
         if row == 1 {
@@ -48,10 +52,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
-            cell.mYear.text! = yearArr[indexPath.row]
+            cell.mYear.text! = yearArr[indexPath.row - 2]
+            cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
+            cell.mKPI.text! = kpirateArr[indexPath.row - 2]
             mTableView.rowHeight = UITableView.automaticDimension
-            //12.19
-            
             return cell
         }
     }
