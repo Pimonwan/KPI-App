@@ -30,7 +30,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row
         if row == 0 {return 100}
-        if row == 1 {return 200}
+        if row == 1 {return 220}
         else{
             if self.SelectedIndex == indexPath.row && isCoolapce == true
             {
@@ -86,7 +86,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             //Actual
                 
-            let values1: [Double] = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+            let values1: [Double] = [19,18,17,16,15,14,13,12]
             var dataEntries1: [ChartDataEntry] = []
             
             for i in 0..<ChartFormatter.dataPoints.count {
@@ -94,7 +94,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 dataEntries1.append(dataEntry1)
             }
             
-            let chartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Units Sold 2015")
+            let chartDataSet1 = LineChartDataSet(entries: dataEntries1, label: "Actual")
             chartDataSet1.circleHoleColor = UIColor.red
             chartDataSet1.setCircleColor(UIColor.yellow)
             chartDataSet1.circleRadius = 5
@@ -107,8 +107,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             //end Actual
                 
-                // Start Prepare Data2
-                let values2: [Double] = [25.0, 6.0, 5.0, 10.0, 12.0, 18.0]
+                // Start Prepare Score
+                let values2: [Double] = [29,28,27,26,25,24,23,22]
                 var dataEntries2: [ChartDataEntry] = []
                 
                 for i in 0..<ChartFormatter.dataPoints.count {
@@ -119,7 +119,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 // Set X-Axis Label
                 cell.mLineChartView.xAxis.valueFormatter = formatter
                 
-                let chartDataSet2 = LineChartDataSet(entries: dataEntries2, label: "Units Sold 2016")
+                let chartDataSet2 = LineChartDataSet(entries: dataEntries2, label: "Score")
                 
                 chartDataSet2.drawFilledEnabled = true
                 chartDataSet2.fillColor = #colorLiteral(red: 0.9647058824, green: 0.8274509804, blue: 0.8431372549, alpha: 1)
@@ -131,16 +131,17 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 
                 
                 let chartData = LineChartData()
-                //chartDataSet1.mode = .cubicBezier
+                chartDataSet1.mode = .cubicBezier
                 chartDataSet2.mode = .cubicBezier
                 
-                //chartData.addDataSet(chartDataSet1)
+                chartData.addDataSet(chartDataSet1)
                 chartData.addDataSet(chartDataSet2)
                 
                 
-                //chartDataSet1.colors = [UIColor(hexString: "#6D95E8")] // Single Color
-                chartDataSet2.colors = ChartColorTemplates.colorful() // Multiple Colors
-                
+                chartDataSet1.colors = [UIColor(hexString: "#6D95E8")] // Single Color
+                chartDataSet2.colors = [UIColor(hexString: "#483D8B")]
+//                chartDataSet2.colors = ChartColorTemplates.colorful() // Multiple Colors
+            
                 // Assign Data
                 cell.mLineChartView.data = chartData
             
@@ -180,7 +181,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 public class ChartFormatter: NSObject, IAxisValueFormatter{
     
 //    static var dataPoints: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    static var dataPoints: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String{
         return ChartFormatter.dataPoints[Int(value)]

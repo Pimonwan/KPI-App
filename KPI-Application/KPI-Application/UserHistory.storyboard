@@ -77,11 +77,11 @@
                                             <outlet property="mName" destination="2H2-G2-MdU" id="pDd-eP-g0d"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartViewCell" rowHeight="213" id="8iS-HP-IoG" customClass="ChartTableViewCell" customModule="KPI_Application" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="129" width="375" height="213"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChartViewCell" rowHeight="218" id="8iS-HP-IoG" customClass="ChartTableViewCell" customModule="KPI_Application" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="129" width="375" height="218"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8iS-HP-IoG" id="obe-aJ-8mh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="212.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4rd-0c-Fb3" userLabel="view">
@@ -91,10 +91,9 @@
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2oi-vE-1N7" customClass="LineChartView" customModule="Charts">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.96620899439999997" green="0.42698684139999998" blue="0.2407109167" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.17208187393897209" green="0.4415731211713888" blue="0.57780116580310881" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -103,7 +102,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DropViewCell" rowHeight="333" id="FtE-12-UD7" customClass="DropTableViewCell" customModule="KPI_Application" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="342" width="375" height="333"/>
+                                        <rect key="frame" x="0.0" y="347" width="375" height="333"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FtE-12-UD7" id="pZG-m6-EfU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="332.5"/>
