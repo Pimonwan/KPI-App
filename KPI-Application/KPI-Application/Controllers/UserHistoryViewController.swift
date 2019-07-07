@@ -36,7 +36,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             {
                 return 335
             }else{
-                return 50
+                return 72
             }
         }
     }
