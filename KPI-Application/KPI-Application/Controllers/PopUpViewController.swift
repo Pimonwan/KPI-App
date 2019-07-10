@@ -13,6 +13,7 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showAnimate()
+         view.backgroundColor = UIColor.black
          self.navigationItem.backBarButtonItem=nil;
     }
     

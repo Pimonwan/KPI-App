@@ -16,6 +16,8 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          self.title = "Users List"
+        
+        view.backgroundColor = UIColor.black
     }
 }
 
@@ -29,17 +31,17 @@ extension UserViewController: UITableViewDelegate , UITableViewDataSource{
         cell.mUserName.text = nameList[indexPath.row]
         return cell
     }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "scoring_view", sender: nameList[indexPath.row])
-//        
-//        
-//    }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let targetVC = segue.destination as? ScoringViewController{
-//            targetVC.name = sender as! String
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "scoring_view", sender: nameList[indexPath.row])
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let targetVC = segue.destination as? ScoringViewController{
+            targetVC.name = sender as! String
+        }
+    }
     
 }

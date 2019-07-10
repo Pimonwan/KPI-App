@@ -10,6 +10,7 @@ import UIKit
 class SummaryViewController: UIViewController {
     
     var mes : [String] = []
+    var name : String = ""
     
     @IBOutlet weak var actual1 : UILabel!
     @IBOutlet weak var actual2 : UILabel!
@@ -32,9 +33,11 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var ta : UILabel!
     @IBOutlet weak var ts : UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          self.title = "Summary"
+        self.view.backgroundColor = UIColor.black
         self.actual1.text = self.mes[0]
         self.actual2.text = self.mes[1]
         self.actual3.text = self.mes[2]
