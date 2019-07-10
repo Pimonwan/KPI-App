@@ -39,7 +39,8 @@ class ScoringViewController: UIViewController {
     }
     
     func feedData(){
-        AF.request("http://192.168.43.225:8081/api/kpi/5", method: .get).responseJSON { (response) in
+//        AF.request("http://192.168.43.225:8081/api/kpi/5", method: .get).responseJSON { (response) in
+        AF.request("http://172.20.10.13:8081/api/kpi/5", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
