@@ -113,6 +113,8 @@ class NAME {
     }
 }
 
+//Search Edit (red)
+
 //extension AdminHistoryViewController: UISearchBarDelegate{
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        currentNameArray = nameArray.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
