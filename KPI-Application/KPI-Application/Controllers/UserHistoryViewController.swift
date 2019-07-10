@@ -138,7 +138,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 chartData.addDataSet(chartDataSet2)
                 
                 
-                chartDataSet1.colors = [UIColor(hexString: "#7CFC00")] // Single Color
+                chartDataSet1.colors = [UIColor(hexString: "#00FF00")] // Single Color
                 chartDataSet2.colors = [UIColor(hexString: "#0000FF")]
 //                chartDataSet2.colors = ChartColorTemplates.colorful() // Multiple Colors
             
@@ -173,8 +173,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }
         self.SelectedIndex = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    
+        }
 }
 
 @objc(ChartFormatter)

@@ -1,10 +1,11 @@
 import UIKit
 import DynamicColor
 
-class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     
     @IBOutlet weak var AdminTableView: UITableView!
+    @IBOutlet weak var Search: UISearchBar!
     
     
     //Data
@@ -14,13 +15,46 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     var name = "Thammanoon Wethanyaporn"
     var id = "12345"
     
+    var nameArray = [NAME]()
+    var currentNameArray = [NAME]()
+    var searching = false
+    
     var SelectedIndex = -1
     var isCoolapce = false
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        setupSearchBar()
+        alterLayout()
     }
+    
+    private func setUpData() {
+        // CATS
+        nameArray.append(NAME(name: "Amber", image: "test", id: 13, year: 1))
+        nameArray.append(NAME(name: "Ham", image: "test", id: 12, year: 11))
+        nameArray.append(NAME(name: "Amber", image: "test", id: 14, year: 1))
+        
+        currentNameArray = nameArray
+    }
+    
+//    func setupSearchBar(){
+//        Search.delegate = self
+//    }
+//
+    func alterLayout() {
+        AdminTableView.tableHeaderView = UIView()
+        // search bar in section header
+        AdminTableView.estimatedSectionHeaderHeight = 50
+        // search bar in navigation bar
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
+        navigationItem.titleView = Search
+        Search.showsScopeBar = false // you can show/hide this dependant on your layout
+        Search.placeholder = "Search by Name"
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             if self.SelectedIndex == indexPath.row && isCoolapce == true
@@ -32,7 +66,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let row = yearArr.count
+        let row = nameArr.count
         return row
     }
     
@@ -40,6 +74,8 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell") as! AdminTableViewCell
             cell.Year.text! = yearArr[indexPath.row]
+            cell.name.text! = nameArr[indexPath.row]
+            cell.id.text! = idArr[indexPath.row]
             AdminTableView.rowHeight = UITableView.automaticDimension
             return cell
         }
@@ -61,6 +97,74 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         self.SelectedIndex = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-    
 }
+
+class NAME {
+    let name: String
+    let image: String
+    let id: Int
+    let year: Int
+    
+    init(name: String, image: String, id:Int, year: Int) {
+        self.name = name
+        self.image = image
+        self.id = id
+        self.year = year
+    }
+}
+
+//extension AdminHistoryViewController: UISearchBarDelegate{
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        currentNameArray = nameArray.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+//        searching = true
+//        AdminTableView.reloadData()
+//    }
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searching = false
+//        searchBar.text = ""
+//        tblView.reloadData()
+//    }
+
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        currentNameArray = nameArray.filter({ animal -> Bool in
+//            switch searchBar.selectedScopeButtonIndex {
+//            case 0:
+//                if searchText.isEmpty { return true }
+//                return animal.name.lowercased().contains(searchText.lowercased())
+//            case 1:
+//                if searchText.isEmpty { return animal.category == .dog }
+//                return animal.name.lowercased().contains(searchText.lowercased()) &&
+//                    animal.category == .dog
+//            case 2:
+//                if searchText.isEmpty { return animal.category == .cat }
+//                return animal.name.lowercased().contains(searchText.lowercased()) &&
+//                    animal.category == .cat
+//            default:
+//                return false
+//            }
+//        })
+//        table.reloadData()
+//    }
+//
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        switch selectedScope {
+//        case 0:
+//            currentAnimalArray = animalArray
+//        case 1:
+//            currentAnimalArray = animalArray.filter({ animal -> Bool in
+//                animal.category == AnimalType.dog
+//            })
+//        case 2:
+//            currentAnimalArray = animalArray.filter({ animal -> Bool in
+//                animal.category == AnimalType.cat
+//            })
+//        default:
+//            break
+//        }
+//        table.reloadData()
+//    }
+//}
+
+
 
