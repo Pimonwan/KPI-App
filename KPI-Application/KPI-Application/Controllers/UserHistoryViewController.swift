@@ -65,24 +65,24 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 cell.mLineChartView.noDataText = "You need to provide data for the chart."
                 cell.mLineChartView.chartDescription?.text = ""
                 cell.mLineChartView.chartDescription?.font = UIFont.boldSystemFont(ofSize: 10)
-                cell.mLineChartView.chartDescription?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.mLineChartView.chartDescription?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 
                 cell.mLineChartView.leftAxis.enabled = true;
                 cell.mLineChartView.leftAxis.axisLineColor = #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
                 cell.mLineChartView.leftAxis.gridColor =  #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
-                cell.mLineChartView.leftAxis.labelTextColor =  #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.57)
+                cell.mLineChartView.leftAxis.labelTextColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.57)
                 cell.mLineChartView.rightAxis.enabled = false;
                 cell.mLineChartView.xAxis.enabled = true;
                 cell.mLineChartView.xAxis.gridColor =   #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
                 cell.mLineChartView.xAxis.labelPosition = .bottom
-                cell.mLineChartView.xAxis.labelTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.3)
+                cell.mLineChartView.xAxis.labelTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.3)
                 
                 // Common Animation
                 cell.mLineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
                 
                 // Set Background Color
-                cell.mLineChartView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-                cell.mLineChartView.gridBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+                cell.mLineChartView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.mLineChartView.gridBackgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             
             //Actual
                 
@@ -99,7 +99,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             chartDataSet1.setCircleColor(UIColor.yellow)
             chartDataSet1.circleRadius = 5
             chartDataSet1.circleHoleRadius = 2
-            chartDataSet1.valueColors = [UIColor(hexString: "#000000").withAlphaComponent(0.3)]
+            chartDataSet1.valueColors = [UIColor(hexString: "#ffffff").withAlphaComponent(0.3)]
             chartDataSet1.drawFilledEnabled = true
             chartDataSet1.fillColor = UIColor(hexString: "#6D95E8")
             chartDataSet1.fillAlpha = 0.1
@@ -122,11 +122,11 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 let chartDataSet2 = LineChartDataSet(entries: dataEntries2, label: "Score")
                 
                 chartDataSet2.drawFilledEnabled = true
-                chartDataSet2.fillColor = #colorLiteral(red: 0.9647058824, green: 0.8274509804, blue: 0.8431372549, alpha: 1)
+                chartDataSet2.fillColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 chartDataSet2.fillAlpha = 0.1
                 chartDataSet2.circleRadius = 5
                 chartDataSet2.circleHoleRadius = 2
-                chartDataSet2.valueColors = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).withAlphaComponent(0.3)]
+                chartDataSet2.valueColors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.3)]
                 chartDataSet2.lineWidth = 3
                 
                 
@@ -138,8 +138,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 chartData.addDataSet(chartDataSet2)
                 
                 
-                chartDataSet1.colors = [UIColor(hexString: "#6D95E8")] // Single Color
-                chartDataSet2.colors = [UIColor(hexString: "#483D8B")]
+                chartDataSet1.colors = [UIColor(hexString: "#7CFC00")] // Single Color
+                chartDataSet2.colors = [UIColor(hexString: "#0000FF")]
 //                chartDataSet2.colors = ChartColorTemplates.colorful() // Multiple Colors
             
                 // Assign Data
