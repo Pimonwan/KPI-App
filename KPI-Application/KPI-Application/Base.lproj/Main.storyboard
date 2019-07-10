@@ -57,7 +57,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ale-PC-s2t" kind="show" id="ZHH-9g-tFx"/>
+                                            <segue destination="g6f-ma-Eyx" kind="show" id="2Vr-EQ-fYB"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BPa-Nk-U0u">

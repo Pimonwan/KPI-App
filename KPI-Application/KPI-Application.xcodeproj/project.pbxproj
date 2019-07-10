@@ -22,15 +22,27 @@
 		AD05857622CBAD9B00B36010 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */; };
 		AD05857822CBBDAB00B36010 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857722CBBDAB00B36010 /* ScoringViewController.swift */; };
 		AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */; };
+		AD06892822D4BB8400D5CADC /* kpiFormResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */; };
 		AD5DB79422CCEEEC007B4E46 /* Scoring_Mock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */; };
 		AD76E16122CD5E7D0024F139 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76E16022CD5E7D0024F139 /* SummaryViewController.swift */; };
 		AD76E16322CD6D550024F139 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76E16222CD6D550024F139 /* PopUpViewController.swift */; };
+		AD8F545322D49B5400282E45 /* KPI_ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8F545222D49B5400282E45 /* KPI_ApplicationTests.swift */; };
 		ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEAD25A22CA5456005FC1FA /* AppDelegate.swift */; };
 		ADEAD25D22CA5456005FC1FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEAD25C22CA5456005FC1FA /* ViewController.swift */; };
 		ADEAD26022CA5456005FC1FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD25E22CA5456005FC1FA /* Main.storyboard */; };
 		ADEAD26222CA5457005FC1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD26122CA5457005FC1FA /* Assets.xcassets */; };
 		ADEAD26522CA5457005FC1FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD26322CA5457005FC1FA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD8F545522D49B5400282E45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADEAD24F22CA5456005FC1FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADEAD25622CA5456005FC1FA;
+			remoteInfo = "KPI-Application";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4C378437729F0A5C22E65EB7 /* Pods-KPI-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPI-Application.debug.xcconfig"; path = "Target Support Files/Pods-KPI-Application/Pods-KPI-Application.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,9 +62,13 @@
 		AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AD05857722CBBDAB00B36010 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTableViewCell.swift; sourceTree = "<group>"; };
+		AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpiFormResponse.swift; sourceTree = "<group>"; };
 		AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scoring_Mock.storyboard; sourceTree = "<group>"; };
 		AD76E16022CD5E7D0024F139 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		AD76E16222CD6D550024F139 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		AD8F545022D49B5400282E45 /* KPI-ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KPI-ApplicationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8F545222D49B5400282E45 /* KPI_ApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPI_ApplicationTests.swift; sourceTree = "<group>"; };
+		AD8F545422D49B5400282E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADEAD25722CA5456005FC1FA /* KPI-Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KPI-Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEAD25A22CA5456005FC1FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADEAD25C22CA5456005FC1FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AD8F544D22D49B5400282E45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADEAD25422CA5456005FC1FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,10 +147,28 @@
 			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
+		AD06892622D4BB3D00D5CADC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD8F545122D49B5400282E45 /* KPI-ApplicationTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F545222D49B5400282E45 /* KPI_ApplicationTests.swift */,
+				AD8F545422D49B5400282E45 /* Info.plist */,
+			);
+			path = "KPI-ApplicationTests";
+			sourceTree = "<group>";
+		};
 		ADEAD24E22CA5456005FC1FA = {
 			isa = PBXGroup;
 			children = (
 				ADEAD25922CA5456005FC1FA /* KPI-Application */,
+				AD8F545122D49B5400282E45 /* KPI-ApplicationTests */,
 				ADEAD25822CA5456005FC1FA /* Products */,
 				BDF857A7645E89F4E8981185 /* Pods */,
 				7721E7D3AB0925E193727C69 /* Frameworks */,
@@ -138,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				ADEAD25722CA5456005FC1FA /* KPI-Application.app */,
+				AD8F545022D49B5400282E45 /* KPI-ApplicationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +187,7 @@
 		ADEAD25922CA5456005FC1FA /* KPI-Application */ = {
 			isa = PBXGroup;
 			children = (
+				AD06892622D4BB3D00D5CADC /* Models */,
 				8C21417E22CCC576002F9D25 /* Library */,
 				AD05857C22CBC60E00B36010 /* Views */,
 				AD05857B22CBC60200B36010 /* Controllers */,
@@ -174,6 +217,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AD8F544F22D49B5400282E45 /* KPI-ApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8F545922D49B5400282E45 /* Build configuration list for PBXNativeTarget "KPI-ApplicationTests" */;
+			buildPhases = (
+				AD8F544C22D49B5400282E45 /* Sources */,
+				AD8F544D22D49B5400282E45 /* Frameworks */,
+				AD8F544E22D49B5400282E45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD8F545622D49B5400282E45 /* PBXTargetDependency */,
+			);
+			name = "KPI-ApplicationTests";
+			productName = "KPI-ApplicationTests";
+			productReference = AD8F545022D49B5400282E45 /* KPI-ApplicationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ADEAD25622CA5456005FC1FA /* KPI-Application */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADEAD26922CA5457005FC1FA /* Build configuration list for PBXNativeTarget "KPI-Application" */;
@@ -203,6 +264,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "พิมลวรรณ สุดมี";
 				TargetAttributes = {
+					AD8F544F22D49B5400282E45 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = ADEAD25622CA5456005FC1FA;
+					};
 					ADEAD25622CA5456005FC1FA = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -222,11 +287,19 @@
 			projectRoot = "";
 			targets = (
 				ADEAD25622CA5456005FC1FA /* KPI-Application */,
+				AD8F544F22D49B5400282E45 /* KPI-ApplicationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AD8F544E22D49B5400282E45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADEAD25522CA5456005FC1FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +359,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AD8F544C22D49B5400282E45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8F545322D49B5400282E45 /* KPI_ApplicationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADEAD25322CA5456005FC1FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,6 +381,7 @@
 				ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */,
 				8CB10C2E22CE5C6A00D428AA /* DropTableViewCell.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewController.swift in Sources */,
+				AD06892822D4BB8400D5CADC /* kpiFormResponse.swift in Sources */,
 				AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */,
 				8CB10C3222CE5CAA00D428AA /* UserDetailTableViewCell.swift in Sources */,
 				8CF3716322D5931D00D689F0 /* AdminTableViewCell.swift in Sources */,
@@ -309,6 +391,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD8F545622D49B5400282E45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADEAD25622CA5456005FC1FA /* KPI-Application */;
+			targetProxy = AD8F545522D49B5400282E45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ADEAD25E22CA5456005FC1FA /* Main.storyboard */ = {
@@ -330,6 +420,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AD8F545722D49B5400282E45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "KPI-ApplicationTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "scb.KPI-ApplicationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KPI-Application.app/KPI-Application";
+			};
+			name = Debug;
+		};
+		AD8F545822D49B5400282E45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "KPI-ApplicationTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "scb.KPI-ApplicationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KPI-Application.app/KPI-Application";
+			};
+			name = Release;
+		};
 		ADEAD26722CA5457005FC1FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -485,6 +613,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AD8F545922D49B5400282E45 /* Build configuration list for PBXNativeTarget "KPI-ApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8F545722D49B5400282E45 /* Debug */,
+				AD8F545822D49B5400282E45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ADEAD25222CA5456005FC1FA /* Build configuration list for PBXProject "KPI-Application" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

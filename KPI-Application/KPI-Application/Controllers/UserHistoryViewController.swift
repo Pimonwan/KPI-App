@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 import Charts
 import DynamicColor
 
@@ -24,6 +25,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedData()
 //        self.createLineChart()
     }
     
@@ -174,6 +176,35 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         self.SelectedIndex = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
         }
+    
+    func feedData(){
+        AF.request("http://192.168.43.225:8081/api/kpi/5", method: .get).responseJSON { (response) in
+            switch response.result{
+            case .success :
+                do{
+                    let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
+                    print(result)
+//                    let kpi = result.data.data.topicList
+                    
+//                    for (index, _) in kpi.enumerated(){
+//                        self.mSubTopicArray.append([])
+//                        for(index2, _) in kpi[index].subTopicList.enumerated(){
+//                            let subTopic = kpi[index].subTopicList[index2].name
+//                            self.mSubTopicArray[index].append(subTopic)
+//                        }
+//                        self.mTopicArray.append(kpi[index].name)
+//                    }
+                    
+//                    self.mTableView.reloadData()
+                }catch{
+                    
+                }
+            case .failure(let error):
+                print("network error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }
 
 @objc(ChartFormatter)
