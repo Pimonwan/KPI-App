@@ -145,6 +145,8 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! ScoringTableViewCell
         
+        print(" indexOfTppic : \(self.indexOfTopic)")
+        print(" indexPath : \(indexPath.row)")
         cell.mText.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
         if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
             self.indexOfTopic += 1
