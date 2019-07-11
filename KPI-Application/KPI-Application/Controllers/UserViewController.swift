@@ -11,7 +11,7 @@ import UIKit
 class UserViewController: UIViewController {
     
     @IBOutlet weak var mTableView : UITableView!
-    let nameList = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet"]
+    let nameList = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet", "Olivia Sophia","Isabella Emma", "Emily Ava", "Abigail Madison", "Chloe Mia" ,"Lily Grace"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class UserViewController: UIViewController {
 
 extension UserViewController: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return self.nameList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
