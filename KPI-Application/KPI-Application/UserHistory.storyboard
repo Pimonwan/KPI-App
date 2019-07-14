@@ -499,6 +499,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="AutoAc" destination="mWc-Hf-XLg" id="gJd-4f-OHU"/>
+                                            <outlet property="AutoRe" destination="LJU-NP-ymc" id="oxb-Eb-Lir"/>
+                                            <outlet property="AutoSc" destination="3yX-7K-xkq" id="dtf-c0-TVZ"/>
+                                            <outlet property="BuildAc" destination="hks-U0-KFj" id="SLk-fF-QPi"/>
+                                            <outlet property="BuildRm" destination="eWz-0k-9Wd" id="HWY-pq-tp4"/>
+                                            <outlet property="BuildSc" destination="3tl-Wy-WhY" id="G4H-SV-vhH"/>
+                                            <outlet property="InnoAc" destination="4E5-He-wvY" id="y6n-v7-Cb1"/>
+                                            <outlet property="InnoRm" destination="lt4-tQ-50G" id="rgS-jn-ftn"/>
+                                            <outlet property="InnoSc" destination="lt4-tQ-50G" id="rBi-1c-VwG"/>
+                                            <outlet property="OnAc" destination="Uht-5m-ZVJ" id="eHr-0P-kmP"/>
+                                            <outlet property="OnRe" destination="cBT-Zv-Rhv" id="hv4-3n-DtV"/>
+                                            <outlet property="OnSc" destination="pUJ-SS-XbM" id="SiQ-h0-E2a"/>
+                                            <outlet property="PraAc" destination="Nzl-Cp-20R" id="NqK-8G-1FD"/>
+                                            <outlet property="PraRm" destination="2ET-wi-tG0" id="krK-uI-Q57"/>
+                                            <outlet property="PraSc" destination="frL-fz-9Ic" id="iOd-lD-w5m"/>
+                                            <outlet property="PreAc" destination="97D-9J-hfG" id="ap2-g0-gWW"/>
+                                            <outlet property="PreRm" destination="auM-qK-Q3k" id="wgf-0f-ABA"/>
+                                            <outlet property="PreSc" destination="V8O-7T-7Nv" id="EX4-5d-cZC"/>
+                                            <outlet property="ProAc" destination="1PS-Lt-7eb" id="rq7-Q7-Q0f"/>
+                                            <outlet property="ProRe" destination="9aO-g2-qPr" id="mKp-FP-oiO"/>
+                                            <outlet property="ProSc" destination="hun-YN-3yk" id="Dc9-e2-1pn"/>
+                                            <outlet property="TechAc" destination="epA-tS-MOV" id="c0A-U3-nwf"/>
+                                            <outlet property="TechRm" destination="ozt-DM-LpY" id="Wca-5t-CK1"/>
+                                            <outlet property="TechSc" destination="UyO-Po-eBc" id="zRr-dH-lYE"/>
                                             <outlet property="mActualScore" destination="xFR-4f-CsH" id="2gO-Jp-5jo"/>
                                             <outlet property="mKPI" destination="mLu-Dj-1SD" id="112-oj-K7w"/>
                                             <outlet property="mYear" destination="4mp-bg-wCM" id="vv7-Ye-elj"/>

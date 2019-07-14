@@ -13,6 +13,7 @@
 		8CB10C2E22CE5C6A00D428AA /* DropTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB10C2D22CE5C6A00D428AA /* DropTableViewCell.swift */; };
 		8CB10C3022CE5C8800D428AA /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB10C2F22CE5C8800D428AA /* ChartTableViewCell.swift */; };
 		8CB10C3222CE5CAA00D428AA /* UserDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB10C3122CE5CAA00D428AA /* UserDetailTableViewCell.swift */; };
+		8CCED93622DB290F00BB3B32 /* UserHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCED93522DB290F00BB3B32 /* UserHistoryResponse.swift */; };
 		8CF3716122D5931200D689F0 /* AdminHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF3716022D5931200D689F0 /* AdminHistory.storyboard */; };
 		8CF3716322D5931D00D689F0 /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3716222D5931D00D689F0 /* AdminTableViewCell.swift */; };
 		8CF3716522D5933400D689F0 /* AdminHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF3716422D5933400D689F0 /* AdminHistoryViewController.swift */; };
@@ -54,6 +55,7 @@
 		8CB10C2D22CE5C6A00D428AA /* DropTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTableViewCell.swift; sourceTree = "<group>"; };
 		8CB10C2F22CE5C8800D428AA /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		8CB10C3122CE5CAA00D428AA /* UserDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailTableViewCell.swift; sourceTree = "<group>"; };
+		8CCED93522DB290F00BB3B32 /* UserHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryResponse.swift; sourceTree = "<group>"; };
 		8CF3716022D5931200D689F0 /* AdminHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AdminHistory.storyboard; sourceTree = "<group>"; };
 		8CF3716222D5931D00D689F0 /* AdminTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
 		8CF3716422D5933400D689F0 /* AdminHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminHistoryViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */,
+				8CCED93522DB290F00BB3B32 /* UserHistoryResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				8CB10C2E22CE5C6A00D428AA /* DropTableViewCell.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewController.swift in Sources */,
 				AD06892822D4BB8400D5CADC /* kpiFormResponse.swift in Sources */,
+				8CCED93622DB290F00BB3B32 /* UserHistoryResponse.swift in Sources */,
 				AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */,
 				8CB10C3222CE5CAA00D428AA /* UserDetailTableViewCell.swift in Sources */,
 				8CF3716322D5931D00D689F0 /* AdminTableViewCell.swift in Sources */,

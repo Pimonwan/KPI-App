@@ -8,6 +8,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     @IBOutlet weak var mTableView: UITableView!
     
+    //Mock
+    var GetUser: [Datum] = []
+    
     //Data
     var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
     var actualscoreArr = ["19","18","17","16","15","14","13","12"]
@@ -52,12 +55,15 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
+        //name
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailViewCell") as! UserDetailTableViewCell
             cell.mName.text! = name
             cell.mID.text! = id
             return cell
         }
+        
+        //Chart
         if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartViewCell") as! ChartTableViewCell
             
@@ -151,6 +157,12 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
+//            let item = GetUser[indexPath.row]
+   
+//            cell.mYear.text! = yearArr[indexPath.row - 2]
+//            cell.mActualScore.text! = "\(item.finalActualScore)"
+//            cell.mKPI.text! = "\(item.finalRatingScore)"
+            
             cell.mYear.text! = yearArr[indexPath.row - 2]
             cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
             cell.mKPI.text! = kpirateArr[indexPath.row - 2]
@@ -178,14 +190,17 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }
     
     func feedData(){
-        AF.request("http://192.168.43.225:8081/api/kpi/5", method: .get).responseJSON { (response) in
+        AF.request("http://92.168.2.43:8081/api/kpi/5", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
-                    let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
+                    let result = try JSONDecoder().decode(Datum.self, from: response.data!)
                     print(result)
-//                    let kpi = result.data.data.topicList
+                    self.GetUser = [result.self]
                     
+                    
+//                    let kpi = result.data.data.topicList
+//
 //                    for (index, _) in kpi.enumerated(){
 //                        self.mSubTopicArray.append([])
 //                        for(index2, _) in kpi[index].subTopicList.enumerated(){
@@ -194,10 +209,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 //                        }
 //                        self.mTopicArray.append(kpi[index].name)
 //                    }
-                    
-//                    self.mTableView.reloadData()
+
+                    self.mTableView.reloadData()
                 }catch{
-                    
+
                 }
             case .failure(let error):
                 print("network error: \(error.localizedDescription)")
