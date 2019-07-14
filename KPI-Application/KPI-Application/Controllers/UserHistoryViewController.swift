@@ -9,7 +9,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     @IBOutlet weak var mTableView: UITableView!
     
     //Mock
-    var GetUser: [Datum] = []
+//    var GetUser: [Datum] = []
+    var GetUser: Datum?
+    var GetUser2: ScoreHistoryList?
     
     //Data
 //    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
@@ -164,9 +166,18 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 //            cell.mActualScore.text! = "\(item.finalActualScore)"
 //            cell.mKPI.text! = "\(item.finalRatingScore)"
             
-            cell.mYear.text! = yearArr[indexPath.row - 2]
-            cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
-            cell.mKPI.text! = kpirateArr[indexPath.row - 2]
+//            cell.mYear.text! = yearArr[indexPath.row - 2]
+//            cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
+//            cell.mKPI.text! = kpirateArr[indexPath.row - 2]
+            
+              cell.mYear.text! = yearArr[indexPath.row - 2]
+            cell.mActualScore.text! = "\(GetUser?.finalActualScore)"
+            cell.mKPI.text! = "\(GetUser?.finalRatingScore)"
+            
+            cell.TechAc.text! = "\(GetUser2?.actualScore)"
+            cell.TechSc.text! = "\(GetUser2?.ratingScore)"
+            cell.TechRm.text! = "\(GetUser2?.remark)"
+            
             
             mTableView.rowHeight = UITableView.automaticDimension
             return cell
