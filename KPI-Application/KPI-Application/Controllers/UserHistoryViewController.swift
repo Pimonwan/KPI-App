@@ -12,7 +12,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     var GetUser: [Datum] = []
     
     //Data
-    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
+//    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
+    var yearArr = ["2019"]
     var actualscoreArr = ["19","18","17","16","15","14","13","12"]
     var kpirateArr = ["29","28","27","26","25","24","23","22"]
     var name = "Thammanoon Wethanyaporn"
@@ -166,6 +167,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             cell.mYear.text! = yearArr[indexPath.row - 2]
             cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
             cell.mKPI.text! = kpirateArr[indexPath.row - 2]
+            
             mTableView.rowHeight = UITableView.automaticDimension
             return cell
         }
@@ -174,6 +176,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+//        let row = indexPath.row
+//        if row == 0 {self.isCoolapce == false}
+//        if row == 1 {self.isCoolapce == false}
+//        else{
         if SelectedIndex == indexPath.row
         {
             if self.isCoolapce == false
@@ -188,6 +194,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         self.SelectedIndex = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
         }
+//        }
     
     func feedData(){
         AF.request("http://92.168.2.43:8081/api/kpi/5", method: .get).responseJSON { (response) in
@@ -196,7 +203,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 do{
                     let result = try JSONDecoder().decode(Datum.self, from: response.data!)
                     print(result)
-                    self.GetUser = [result.self]
+                    
+                    print("test")
+//                    self.GetUser = [result.self]
                     
                     
 //                    let kpi = result.data.data.topicList
