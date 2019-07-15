@@ -8,13 +8,13 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var Search: UISearchBar!
     
     
-    //Data
-    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
-    var idArr = ["19000","18000","17000","16000","15000","14000","13000","12000","11000","10000","11100","10090","10200"]
-    var nameArr = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet", "Olivia Sophia","Isabella Emma", "Emily Ava", "Abigail Madison", "Chloe Mia" ,"Lily Grace"]
+  
+    
+    var UserArray = [User]()
+    var currentUserArray = [User]()
     
     var searching = false
-    var searchID = [String]()
+//    var searchID = [String]()
     
     var SelectedIndex = -1
     var isCoolapce = false
@@ -25,14 +25,36 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         super.viewDidLoad()
 //        setupSearchBar()
         alterLayout()
+        setUpUser()
+    }
+    
+    //Data
+    
+    private func setUpUser() {
+        UserArray.append(User(name: "Pimonwan Sutmee", id: "12341", year: "2019"))
+        UserArray.append(User(name: "Pimonwan Sutmee", id: "12341", year: "2018"))
+        UserArray.append(User(name: "Maneekan Yanvisit", id: "34593", year: "2019"))
+        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2019"))
+        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2018"))
+        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2017"))
+        UserArray.append(User(name: "Nontapat Tapprasan", id: "54321", year: "2019"))
+        UserArray.append(User(name: "Thammanoon Wethanyaporn", id: "57321", year: "2019"))
+        UserArray.append(User(name: "Thanapong Supalak", id: "57901", year: "2019"))
+        UserArray.append(User(name: "Pattaragun Chimphet", id: "07901", year: "2019"))
+        UserArray.append(User(name: "Olivia Sophia", id: "07671", year: "2019"))
+        UserArray.append(User(name: "Isabella Emma", id: "08901", year: "2019"))
+        UserArray.append(User(name: "Emily Ava", id: "12301", year: "2019"))
+        UserArray.append(User(name: "Abigail Madison", id: "09321", year: "2019"))
+        
+        currentUserArray = UserArray
     }
     
    
     
-//    func setupSearchBar(){
-//        Search.delegate = self
-//    }
-//
+    func setupSearchBar(){
+        Search.delegate = self
+    }
+
     func alterLayout() {
         AdminTableView.tableHeaderView = UIView()
         // search bar in section header
@@ -41,7 +63,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         //navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.titleView = Search
         Search.showsScopeBar = false // you can show/hide this dependant on your layout
-        Search.placeholder = "Search by Name"
+        Search.placeholder = "Search Bar"
     }
     
     
@@ -56,27 +78,20 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-            return searchID.count
-        } else {
-            return idArr.count
-        }
+            return currentUserArray.count
+//            return idArr.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell") as! AdminTableViewCell
-            cell.Year.text! = yearArr[indexPath.row]
-            cell.name.text! = nameArr[indexPath.row]
-            cell.id.text! = idArr[indexPath.row]
+
+        cell.Year.text! = currentUserArray[indexPath.row].year
+        cell.name.text! = currentUserArray[indexPath.row].name
+        cell.id.text! = currentUserArray[indexPath.row].id
             AdminTableView.rowHeight = UITableView.automaticDimension
         
-//        if searching {
-//            cell?.textLabel?.text = searchedCountry[indexPath.row]
-//        } else {
-//            cell?.textLabel?.text = countryNameArr[indexPath.row]
-//        }
-//        return cell!
+
         
             return cell
         }
@@ -98,6 +113,38 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         self.SelectedIndex = indexPath.row
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    // Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        currentUserArray = UserArray.filter({ User -> Bool in
+            switch searchBar.selectedScopeButtonIndex {
+            case 0:
+                if searchText.isEmpty { return true }
+                return User.name.lowercased().contains(searchText.lowercased())
+//            case 1:
+//                if searchText.isEmpty { return animal.category == .dog }
+//                return User.name.lowercased().contains(searchText.lowercased()) &&
+//                    User.category == .dog
+            default:
+                return false
+            }
+        })
+        AdminTableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            currentUserArray = UserArray
+//        case 1:
+//            currentUserArray = UserArray.filter({ User -> Bool in
+////                animal.category == AnimalType.dog
+//            })
+        default:
+            break
+        }
+        AdminTableView.reloadData()
+    }
 }
 
 class NAME {
@@ -115,17 +162,33 @@ class NAME {
 }
 
 extension AdminHistoryViewController: UISearchBarDelegate {
+
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+////        searchID = currentUserArray.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+//         currentUserArray = UserArray.filter({ User -> Bool in
+//        if searchText.isEmpty {return User.id}
+//        return User.name.lowercased().contains(searchText.lowercased())
+//            })
+//         AdminTableView.reloadData()
+//    }
+//
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searching = false
+//        searchBar.text = ""
+//        AdminTableView.reloadData()
+//    }
+
+}
+
+class User {
+    let name: String
+    let id: String
+    let year: String
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchID = idArr.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
-        searching = true
-        AdminTableView.reloadData()
+    init(name: String, id: String, year: String) {
+        self.name = name
+        self.id = id
+        self.year = year
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchBar.text = ""
-        AdminTableView.reloadData()
-    }
-    
 }
