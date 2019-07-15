@@ -7,15 +7,14 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     
     @IBOutlet weak var mTableView: UITableView!
-    
+
     //Mock
-//    var GetUser: [Datum] = []
-    var GetUser: Datum?
-    var GetUser2: ScoreHistoryList?
+    var GetUser: [Datum] = []
+  
     
     //Data
 //    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
-    var yearArr = ["2019"]
+    var yearArr = ["2019","2018","2017"]
     var actualscoreArr = ["19","18","17","16","15","14","13","12"]
     var kpirateArr = ["29","28","27","26","25","24","23","22"]
     var name = "Thammanoon Wethanyaporn"
@@ -50,8 +49,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let year = yearArr.count
-        let row = 2 + year
+//        let year = yearArr.count
+//        let row = 2 + year
+        
+        let row = self.GetUser.count + 2 //
         return row
     }
     
@@ -160,23 +161,21 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
-//            let item = GetUser[indexPath.row]
    
-//            cell.mYear.text! = yearArr[indexPath.row - 2]
-//            cell.mActualScore.text! = "\(item.finalActualScore)"
-//            cell.mKPI.text! = "\(item.finalRatingScore)"
-            
 //            cell.mYear.text! = yearArr[indexPath.row - 2]
 //            cell.mActualScore.text! = actualscoreArr[indexPath.row - 2]
 //            cell.mKPI.text! = kpirateArr[indexPath.row - 2]
             
-              cell.mYear.text! = yearArr[indexPath.row - 2]
-            cell.mActualScore.text! = "\(GetUser?.finalActualScore)"
-            cell.mKPI.text! = "\(GetUser?.finalRatingScore)"
             
-            cell.TechAc.text! = "\(GetUser2?.actualScore)"
-            cell.TechSc.text! = "\(GetUser2?.ratingScore)"
-            cell.TechRm.text! = "\(GetUser2?.remark)"
+              let item = GetUser[indexPath.row - 2]
+              cell.mYear.text! = yearArr[indexPath.row - 2]
+            
+              cell.mActualScore.text = "\(item.finalActualScore)"
+              cell.mKPI.text = "\(item.finalRatingScore)"
+            
+//              cell.TechAc.text = "\(item.scoreHistoryList)"
+            
+
             
             
             mTableView.rowHeight = UITableView.automaticDimension
@@ -207,28 +206,14 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         }
 //        }
     
-    func feedData(){
-        AF.request("http://92.168.2.43:8081/api/kpi/5", method: .get).responseJSON { (response) in
+    @objc func feedData(){
+        AF.request("http://192.168.109.31:8081/api/kpi/user/1/year/2019", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
-                    let result = try JSONDecoder().decode(Datum.self, from: response.data!)
-                    print(result)
-                    
-                    print("test")
-//                    self.GetUser = [result.self]
-                    
-                    
-//                    let kpi = result.data.data.topicList
-//
-//                    for (index, _) in kpi.enumerated(){
-//                        self.mSubTopicArray.append([])
-//                        for(index2, _) in kpi[index].subTopicList.enumerated(){
-//                            let subTopic = kpi[index].subTopicList[index2].name
-//                            self.mSubTopicArray[index].append(subTopic)
-//                        }
-//                        self.mTopicArray.append(kpi[index].name)
-//                    }
+                    let result = try JSONDecoder().decode(GetUserAPI.self, from: response.data!)
+                    let data = result.data
+                    self.GetUser = data
 
                     self.mTableView.reloadData()
                 }catch{
@@ -245,7 +230,6 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 @objc(ChartFormatter)
 public class ChartFormatter: NSObject, IAxisValueFormatter{
     
-//    static var dataPoints: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String{
