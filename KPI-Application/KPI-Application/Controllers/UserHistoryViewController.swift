@@ -10,13 +10,12 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 
     //Mock
     var GetUser: [Datum] = []
+    
   
     
     //Data
 //    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
     var yearArr = ["2019","2018","2017"]
-    var actualscoreArr = ["19","18","17","16","15","14","13","12"]
-    var kpirateArr = ["29","28","27","26","25","24","23","22"]
     var name = "Thammanoon Wethanyaporn"
     var id = "12345"
     
@@ -168,10 +167,13 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             
               let item = GetUser[indexPath.row - 2]
-              cell.mYear.text! = yearArr[indexPath.row - 2]
             
+              cell.mYear.text! = yearArr[indexPath.row - 2]
               cell.mActualScore.text = "\(item.finalActualScore)"
               cell.mKPI.text = "\(item.finalRatingScore)"
+            
+              cell.TechAc.text = "\(item.scoreHistoryList)"
+        
             
 //              cell.TechAc.text = "\(item.scoreHistoryList)"
             
