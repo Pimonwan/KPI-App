@@ -9,15 +9,12 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
     //Data
-    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012"]
-    var idArr = ["19000","18000","17000","16000","15000","14000","13000","12000"]
-    var nameArr = ["ham","kai","nick","tiger","sari","mon","sai","kai"]
-    var name = "Thammanoon Wethanyaporn"
-    var id = "12345"
+    var yearArr = ["2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007"]
+    var idArr = ["19000","18000","17000","16000","15000","14000","13000","12000","11000","10000","11100","10090","10200"]
+    var nameArr = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet", "Olivia Sophia","Isabella Emma", "Emily Ava", "Abigail Madison", "Chloe Mia" ,"Lily Grace"]
     
-    var nameArray = [NAME]()
-    var currentNameArray = [NAME]()
     var searching = false
+    var searchID = [String]()
     
     var SelectedIndex = -1
     var isCoolapce = false
@@ -30,14 +27,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         alterLayout()
     }
     
-    private func setUpData() {
-        // CATS
-        nameArray.append(NAME(name: "Amber", image: "test", id: 13, year: 1))
-        nameArray.append(NAME(name: "Ham", image: "test", id: 12, year: 11))
-        nameArray.append(NAME(name: "Amber", image: "test", id: 14, year: 1))
-        
-        currentNameArray = nameArray
-    }
+   
     
 //    func setupSearchBar(){
 //        Search.delegate = self
@@ -66,8 +56,11 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let row = nameArr.count
-        return row
+        if searching {
+            return searchID.count
+        } else {
+            return idArr.count
+        }
     }
     
     
@@ -77,6 +70,14 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
             cell.name.text! = nameArr[indexPath.row]
             cell.id.text! = idArr[indexPath.row]
             AdminTableView.rowHeight = UITableView.automaticDimension
+        
+//        if searching {
+//            cell?.textLabel?.text = searchedCountry[indexPath.row]
+//        } else {
+//            cell?.textLabel?.text = countryNameArr[indexPath.row]
+//        }
+//        return cell!
+        
             return cell
         }
     
@@ -113,60 +114,18 @@ class NAME {
     }
 }
 
-//Search Edit (red)
-
-//extension AdminHistoryViewController: UISearchBarDelegate{
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        currentNameArray = nameArray.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
-//        searching = true
-//        AdminTableView.reloadData()
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searching = false
-//        searchBar.text = ""
-//        tblView.reloadData()
-//    }
-
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        currentNameArray = nameArray.filter({ animal -> Bool in
-//            switch searchBar.selectedScopeButtonIndex {
-//            case 0:
-//                if searchText.isEmpty { return true }
-//                return animal.name.lowercased().contains(searchText.lowercased())
-//            case 1:
-//                if searchText.isEmpty { return animal.category == .dog }
-//                return animal.name.lowercased().contains(searchText.lowercased()) &&
-//                    animal.category == .dog
-//            case 2:
-//                if searchText.isEmpty { return animal.category == .cat }
-//                return animal.name.lowercased().contains(searchText.lowercased()) &&
-//                    animal.category == .cat
-//            default:
-//                return false
-//            }
-//        })
-//        table.reloadData()
-//    }
-//
-//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        switch selectedScope {
-//        case 0:
-//            currentAnimalArray = animalArray
-//        case 1:
-//            currentAnimalArray = animalArray.filter({ animal -> Bool in
-//                animal.category == AnimalType.dog
-//            })
-//        case 2:
-//            currentAnimalArray = animalArray.filter({ animal -> Bool in
-//                animal.category == AnimalType.cat
-//            })
-//        default:
-//            break
-//        }
-//        table.reloadData()
-//    }
-//}
-
-
-
+extension AdminHistoryViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchID = idArr.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searching = true
+        AdminTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text = ""
+        AdminTableView.reloadData()
+    }
+    
+}
