@@ -23,7 +23,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupSearchBar()
+        setupSearchBar()
         alterLayout()
         setUpUser()
     }
@@ -89,7 +89,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         cell.Year.text! = currentUserArray[indexPath.row].year
         cell.name.text! = currentUserArray[indexPath.row].name
         cell.id.text! = currentUserArray[indexPath.row].id
-            AdminTableView.rowHeight = UITableView.automaticDimension
+        AdminTableView.rowHeight = UITableView.automaticDimension
         
 
         
@@ -116,18 +116,31 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     // Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty
+        {
+        }
         currentUserArray = UserArray.filter({ User -> Bool in
-            switch searchBar.selectedScopeButtonIndex {
-            case 0:
-                if searchText.isEmpty { return true }
-                return User.name.lowercased().contains(searchText.lowercased())
-//            case 1:
-//                if searchText.isEmpty { return animal.category == .dog }
-//                return User.name.lowercased().contains(searchText.lowercased()) &&
-//                    User.category == .dog
-            default:
+            if User.id.range(of: searchText) != nil {
+                return true
+            }
+            if User.name.range(of: searchText) != nil {
+                return true
+            }
+            if User.year.range(of: searchText) != nil {
+                return true
+            }
+            else
+            {
                 return false
             }
+//            switch searchBar.selectedScopeButtonIndex {
+//            case 0:
+//                if searchText.isEmpty { return true }
+////                return User.id.lowercased().contains(searchText.lowercased()) &&
+//            return  User.name.lowercased().contains(searchText.lowercased())
+//            default:
+//                return false
+//            }
         })
         AdminTableView.reloadData()
     }
@@ -136,10 +149,6 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         switch selectedScope {
         case 0:
             currentUserArray = UserArray
-//        case 1:
-//            currentUserArray = UserArray.filter({ User -> Bool in
-////                animal.category == AnimalType.dog
-//            })
         default:
             break
         }
@@ -162,23 +171,6 @@ class NAME {
 }
 
 extension AdminHistoryViewController: UISearchBarDelegate {
-
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-////        searchID = currentUserArray.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
-//         currentUserArray = UserArray.filter({ User -> Bool in
-//        if searchText.isEmpty {return User.id}
-//        return User.name.lowercased().contains(searchText.lowercased())
-//            })
-//         AdminTableView.reloadData()
-//    }
-//
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searching = false
-//        searchBar.text = ""
-//        AdminTableView.reloadData()
-//    }
-
 }
 
 class User {
