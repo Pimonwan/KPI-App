@@ -23,7 +23,9 @@ class ScoringTableViewCell: UITableViewCell {
 //    @IBOutlet weak var mInput2 : UITextField!
 //    @IBOutlet weak var mInput3 : UITextField!
 //    @IBOutlet weak var mInput4 : UITextField!
-    @IBOutlet weak var mText : UILabel!
+    @IBOutlet weak var mSubTopic : UILabel!
+    @IBOutlet weak var mFullScoreLabel: UILabel!
+    @IBOutlet weak var mScore: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

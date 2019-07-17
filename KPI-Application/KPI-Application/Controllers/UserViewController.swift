@@ -33,15 +33,13 @@ extension UserViewController: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "scoring_view", sender: nameList[indexPath.row])
-        
-        
+//        self.performSegue(withIdentifier: "scoring_view", sender: nameList[indexPath.row])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let targetVC = segue.destination as? ScoringViewController{
-            targetVC.name = sender as! String
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let targetVC = segue.destination as? ScoringViewController{
+//            targetVC.name = sender as! String
+//        }
+//    }
     
 }

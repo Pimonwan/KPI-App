@@ -64,17 +64,16 @@
                     <navigationItem key="navigationItem" id="4de-eK-2fe"/>
                     <connections>
                         <outlet property="mTableView" destination="rIn-bq-igw" id="CHG-jv-Enp"/>
-                        <segue destination="qfT-IT-Tif" kind="show" identifier="scoring_view" id="G8R-X9-GPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPC-Ma-Ujg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-837.60000000000002" y="124.58770614692655"/>
         </scene>
-        <!--Scoring View Controller-->
+        <!--Scoring View Controller Mock-->
         <scene sceneID="Ffs-Yt-UcS">
             <objects>
-                <viewController id="qfT-IT-Tif" customClass="ScoringViewController" customModule="KPI_Application" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qfT-IT-Tif" customClass="ScoringViewControllerMock" customModule="KPI_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n1h-VQ-qR5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +272,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="onClickSubmit" destination="qfT-IT-Tif" eventType="touchUpInside" id="Xb9-Wy-JB5"/>
+                                    <action selector="onClickSubmit" destination="qfT-IT-Tif" eventType="touchUpInside" id="PTc-Cc-IHy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDX-6o-IBu">
@@ -281,7 +280,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Rate"/>
                                 <connections>
-                                    <action selector="showPopup:" destination="qfT-IT-Tif" eventType="touchUpInside" id="k19-4W-BZ5"/>
+                                    <action selector="showPopup:" destination="qfT-IT-Tif" eventType="touchDragInside" id="scf-2r-Z6B"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-Mo-Jl8">
@@ -314,17 +313,15 @@
                         <viewLayoutGuide key="safeArea" id="FP8-lG-gMt"/>
                     </view>
                     <connections>
-                        <outlet property="mID" destination="Bie-Rm-yyP" id="ZMl-ac-M8y"/>
-                        <outlet property="mInput1" destination="iDM-Hu-PmG" id="nl8-3s-6tD"/>
-                        <outlet property="mInput2" destination="oNF-0d-aMg" id="PFd-Xb-eSx"/>
-                        <outlet property="mInput3" destination="hVV-RX-sLv" id="f68-dY-UFo"/>
-                        <outlet property="mInput4" destination="IYM-dk-NLH" id="elD-q7-T8U"/>
-                        <outlet property="mInput5" destination="9VO-dn-guX" id="fHU-wE-3Ax"/>
-                        <outlet property="mInput6" destination="EJM-QC-ibp" id="0BO-5C-5BU"/>
-                        <outlet property="mInput7" destination="5p1-3l-1Wc" id="9tX-pV-qvj"/>
-                        <outlet property="mInput8" destination="Adg-cO-Wgk" id="u55-8j-i46"/>
-                        <outlet property="mName" destination="Mp1-u8-tfN" id="YtT-sf-9lS"/>
-                        <segue destination="M3w-X4-17I" kind="show" identifier="summary_kpi" id="PZW-Ad-b5A"/>
+                        <outlet property="mInput1" destination="iDM-Hu-PmG" id="oos-b8-KQC"/>
+                        <outlet property="mInput2" destination="oNF-0d-aMg" id="YUT-Fv-LIb"/>
+                        <outlet property="mInput3" destination="hVV-RX-sLv" id="boG-va-nYx"/>
+                        <outlet property="mInput4" destination="IYM-dk-NLH" id="hza-Y3-exN"/>
+                        <outlet property="mInput5" destination="9VO-dn-guX" id="YjP-1Z-J30"/>
+                        <outlet property="mInput6" destination="EJM-QC-ibp" id="b4D-YY-fdG"/>
+                        <outlet property="mInput7" destination="5p1-3l-1Wc" id="QOR-G6-k2X"/>
+                        <outlet property="mInput8" destination="Adg-cO-Wgk" id="BBO-rT-fi9"/>
+                        <outlet property="mName" destination="Mp1-u8-tfN" id="txC-wr-Q9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgk-9z-KAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
