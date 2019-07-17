@@ -209,7 +209,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 //        }
     
     @objc func feedData(){
-        AF.request("http://192.168.109.31:8081/api/kpi/user/1/year/2019", method: .get).responseJSON { (response) in
+        AF.request("http://192.168.110.35:8081/api/kpi/user/1/year/2019", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
