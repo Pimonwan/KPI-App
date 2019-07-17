@@ -31,6 +31,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         super.viewDidLoad()
         feedData()
 //        self.createLineChart()
+//        self.view.backgroundColor = UIColor.black
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -232,7 +233,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 @objc(ChartFormatter)
 public class ChartFormatter: NSObject, IAxisValueFormatter{
     
-    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
+//    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
+    static var dataPoints: [String] = ["2019","2018","2017"]
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String{
         return ChartFormatter.dataPoints[Int(value)]
