@@ -49,10 +49,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        let year = yearArr.count
-        //        let row = 2 + year
-        
-        let row = self.GetUser2.count + 2//
+        let row = self.GetUser2.count + 2
         return row
     }
     
@@ -165,19 +162,32 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             let item = GetUser2[indexPath.row - 2]
 //            let item2 = Getuser3[indexPath.row - 2]
-            print(item)
-
+           
             cell.mYear.text! = yearArr[indexPath.row - 2]
             cell.mActualScore.text = "\(item.finalActualScore)"
             cell.mKPI.text = "\(item.finalRatingScore)"
-           
-//            if item2.topicID == 1 {
-//            cell.TechAc.text = "\(item2.actualScore)"
-//            cell.TechSc.text = "\(item2.ratingScore)"
-//            }
-            
+        
             mTableView.rowHeight = UITableView.automaticDimension
             return cell
+            
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
+//            if indexOfTopic < self.mTopicArray.count{
+//                cell2.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
+//                cell2.mFullScoreLabel.text = self.mFullScore[self.indexOfTopic][indexPath.row]
+//                if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
+//                    self.indexOfTopic += 1
+//                }
+//            }
+            
+//            cell2.mScore.delegate = self
+//            if self.tagForTextField < self.scoreTags.count {
+//                cell2.mScore.tag = self.tagForTextField
+//                self.tagForTextField += 1
+//            }
+//            return cell2'
+            
+
+            
         }
     }
     
