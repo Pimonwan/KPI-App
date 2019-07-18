@@ -1,12 +1,12 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let getUserAPI = try? newJSONDecoder().decode(GetUserAPI.self, from: jsonData)
+//   let getUserKPI = try? newJSONDecoder().decode(GetUserKPI.self, from: jsonData)
 
 import Foundation
 
-// MARK: - GetUserAPI
-struct GetUserAPI: Codable {
+// MARK: - GetUserKPI
+struct GetUserKPI: Codable {
     let data: [Datum]
 }
 
