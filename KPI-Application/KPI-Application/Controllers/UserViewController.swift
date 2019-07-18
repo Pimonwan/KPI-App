@@ -12,6 +12,7 @@ class UserViewController: UIViewController {
     
     @IBOutlet weak var mTableView : UITableView!
     let nameList = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet", "Olivia Sophia","Isabella Emma", "Emily Ava", "Abigail Madison", "Chloe Mia" ,"Lily Grace"]
+    var selectedPerson: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,13 @@ class UserViewController: UIViewController {
         
         view.backgroundColor = UIColor.black
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let targetVC = segue.destination as? ScoringViewController{
+            targetVC.name = self.selectedPerson
+        }
+    }
+
 }
 
 extension UserViewController: UITableViewDelegate , UITableViewDataSource{
@@ -33,13 +41,10 @@ extension UserViewController: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "scoring_view", sender: nameList[indexPath.row])
+        print(type(of: nameList[indexPath.row]))
+        print(nameList[indexPath.row])
+        self.selectedPerson = nameList[indexPath.row]
+        performSegue(withIdentifier: "scoring_view", sender: self)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let targetVC = segue.destination as? ScoringViewController{
-//            targetVC.name = sender as! String
-//        }
-//    }
     
 }

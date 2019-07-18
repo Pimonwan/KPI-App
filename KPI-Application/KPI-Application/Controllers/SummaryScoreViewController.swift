@@ -6,6 +6,7 @@ class SummaryScoreViewController: UIViewController {
     var actualScore: [[String]] = []
     var scores: [[Int]] = []
     var KpiForm : [TopicList] = []
+    var name: String = ""
     
     var totalScore: Double = 0
     var kpiRate: Double = 0
@@ -13,12 +14,17 @@ class SummaryScoreViewController: UIViewController {
     var mSubTopicArray: [[String]] = []
     var indexOfTopic: Int = 0
     
+    
+    @IBOutlet weak var mName: UILabel!
     @IBOutlet weak var mTableView: UITableView!
     @IBOutlet weak var mTotalScoreLabel : UILabel!
     @IBOutlet weak var mKpiRateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("actual : \(self.actualScore)")
+        print("kpi: \(self.KpiForm)")
+        self.mName.text = self.name
         prepareDataForTableView()
     }
     
@@ -109,17 +115,10 @@ class SummaryScoreViewController: UIViewController {
     
     func prepareDataForPost(actual: [[String]], kpiRate: [[Int]]) -> [String: Any]{
         var data: [String: Any] = ["form_id" : 1, "final_actual_score" : 70 , "final_rating_score": 3.5 , "score_history_list": []]
-//        let dic : [String : Any] = ["topic_id": 1,
-//                   "sub_topic_id": 1,
-//                   "actual_score": 60,
-//                   "rating_score": 3,
-//                   "remark": ""]
         do {
             for index in 0...self.KpiForm.count - 1 {
                 print(self.KpiForm[index].name)
                 for indexSubTopic in 0...self.KpiForm[index].subTopicList.count - 1{
-                    print("\(index)")
-                    print("\(indexSubTopic)")
                     print(self.KpiForm[index].subTopicList[indexSubTopic].name)
                     let dic : [String : Any] = ["topic_id": self.KpiForm[index].id,
                                                 "sub_topic_id": self.KpiForm[index].subTopicList[indexSubTopic].id,
