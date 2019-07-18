@@ -131,11 +131,11 @@
                                             <outlet property="mLineChartView" destination="2oi-vE-1N7" id="vQm-Hx-FMb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DropViewCell" rowHeight="143" id="FtE-12-UD7" customClass="DropTableViewCell" customModule="KPI_Application" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="347" width="375" height="143"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DropViewCell" rowHeight="188" id="FtE-12-UD7" customClass="DropTableViewCell" customModule="KPI_Application" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="347" width="375" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FtE-12-UD7" id="pZG-m6-EfU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exd-Cl-ywI">
@@ -221,12 +221,13 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.050000000000000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRC-Pb-Mu6">
-                                                    <rect key="frame" x="0.0" y="107" width="375" height="37"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SlB-oK-wFp">
+                                                    <rect key="frame" x="0.0" y="113" width="375" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KPIscore" rowHeight="41" translatesAutoresizingMaskIntoConstraints="NO" id="Wfp-Ba-Cgy" customClass="KPIscoreTableViewCell" customModule="KPI_Application" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KPIscore" rowHeight="41" id="Wfp-Ba-Cgy" customClass="KPIscoreTableViewCell" customModule="KPI_Application" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="375" height="41"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wfp-Ba-Cgy" id="5CZ-xZ-xaB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="40.5"/>
@@ -269,9 +270,8 @@
                                                                 <outlet property="Title" destination="JPD-38-9MQ" id="cPW-CW-XqT"/>
                                                             </connections>
                                                         </tableViewCell>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
+                                                    </prototypes>
+                                                </tableView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
