@@ -271,6 +271,10 @@
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="iMB-Qh-H7O" id="mFM-g4-Eq5"/>
+                                                        <outlet property="delegate" destination="iMB-Qh-H7O" id="R7n-9C-eaW"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -297,9 +301,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pdI-Nn-aNC"/>
                     </view>
-                    <connections>
-                        <outlet property="mTableView" destination="k0d-v8-goY" id="TQj-4O-9GK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExJ-5O-Yo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
