@@ -12,6 +12,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     var GetUser : [GetUserKPI] = []
     var GetUser2: [Datum] = []
     var Getuser3: [ScoreHistoryList] = []
+    //Mock2
+    var KpiForm: [TopicList] = []
+    var mSubTopicArray: [[String]] = []
+      var mTopicArray: [String] = []
     
   
     
@@ -31,6 +35,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         feedData()
+        feedData2()
         //        self.createLineChart()
     }
     
@@ -228,7 +233,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             "id": "1"
         ]
         
-        AF.request("http://172.20.10.13:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
+        AF.request("http://localhost:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
             switch response.result{
             case .success :
                 do{
@@ -250,8 +255,40 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         
         print("\(GetUser2)")
     }
-}
+    
+    func feedData2(){
+        AF.request("http://localhost:8081/kpi/5", method: .get).responseJSON { (response) in
+            switch response.result{
+            case .success :
+                do{
+                    let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
+                    let kpi = result.data.topicList
+                    self.KpiForm = kpi
+                    
+                    var tag = 0
+                    for (index, _) in kpi.enumerated(){
+                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
+                        self.mSubTopicArray.append([])
 
+                        for(index2, _) in kpi[index].subTopicList.enumerated(){
+                            let subTopic = kpi[index].subTopicList[index2].name
+                            self.mSubTopicArray[index].append(subTopic)
+                        }
+                        // เพิ่มหัวข้อ
+                        self.mTopicArray.append(kpi[index].name)
+                    }
+                    // เพื่อรีเฟรชตาราง
+                    self.mTableView.reloadData()
+                }catch{
+                    
+                }
+            case .failure(let error):
+                print("network error: \(error.localizedDescription)")
+            }
+        }
+}
+}
+    
 
 @objc(ChartFormatter)
 public class ChartFormatter: NSObject, IAxisValueFormatter{
@@ -271,4 +308,5 @@ public class ValueFormatter: NSObject, IValueFormatter{
         return "\(value) %"
     }
 }
+
 
