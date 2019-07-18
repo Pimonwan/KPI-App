@@ -23,7 +23,7 @@
 		AD05857622CBAD9B00B36010 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */; };
 		AD05857822CBBDAB00B36010 /* ScoringViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857722CBBDAB00B36010 /* ScoringViewControllerMock.swift */; };
 		AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */; };
-		AD06892822D4BB8400D5CADC /* kpiFormResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */; };
+		AD06892822D4BB8400D5CADC /* KpiFormResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06892722D4BB8400D5CADC /* KpiFormResponse.swift */; };
 		AD2E8FA822DC6DC200B282A7 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E8FA722DC6DC200B282A7 /* ScoringViewController.swift */; };
 		AD5DB79422CCEEEC007B4E46 /* Scoring_Mock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */; };
 		AD76BCD922DE22150050FBF9 /* SummaryScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76BCD822DE22150050FBF9 /* SummaryScoreViewController.swift */; };
@@ -75,7 +75,7 @@
 		AD05857522CBAD9B00B36010 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AD05857722CBBDAB00B36010 /* ScoringViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewControllerMock.swift; sourceTree = "<group>"; };
 		AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTableViewCell.swift; sourceTree = "<group>"; };
-		AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kpiFormResponse.swift; sourceTree = "<group>"; };
+		AD06892722D4BB8400D5CADC /* KpiFormResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpiFormResponse.swift; sourceTree = "<group>"; };
 		AD2E8FA722DC6DC200B282A7 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scoring_Mock.storyboard; sourceTree = "<group>"; };
 		AD76BCD822DE22150050FBF9 /* SummaryScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScoreViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		AD06892622D4BB3D00D5CADC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AD06892722D4BB8400D5CADC /* kpiFormResponse.swift */,
+				AD06892722D4BB8400D5CADC /* KpiFormResponse.swift */,
 				8CCED93522DB290F00BB3B32 /* UserHistoryResponse.swift */,
 			);
 			path = Models;
@@ -455,7 +455,7 @@
 				ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */,
 				8CB10C2E22CE5C6A00D428AA /* DropTableViewCell.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewControllerMock.swift in Sources */,
-				AD06892822D4BB8400D5CADC /* kpiFormResponse.swift in Sources */,
+				AD06892822D4BB8400D5CADC /* KpiFormResponse.swift in Sources */,
 				8CCED93622DB290F00BB3B32 /* UserHistoryResponse.swift in Sources */,
 				AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */,
 				8CB10C3222CE5CAA00D428AA /* UserDetailTableViewCell.swift in Sources */,

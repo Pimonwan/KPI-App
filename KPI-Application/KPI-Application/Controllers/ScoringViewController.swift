@@ -19,6 +19,7 @@ class ScoringViewController: UIViewController {
     var mScore: [String] = []
     var indexOfTopic: Int = 0
     
+    var KpiForm: [TopicList] = []
     
     var allScore: [String] = []
     var scoreTags: [Int] = []
@@ -33,12 +34,13 @@ class ScoringViewController: UIViewController {
     }
     
         func feedData(){
-            AF.request("http://192.168.43.225:8081/api/kpi/5", method: .get).responseJSON { (response) in
+            AF.request("http://localhost:8081/kpi/5", method: .get).responseJSON { (response) in
                 switch response.result{
                 case .success :
                     do{
                         let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
-                        let kpi = result.data.data.topicList
+                        let kpi = result.data.topicList
+                        self.KpiForm = kpi
                         
                         var tag = 0
                         for (index, _) in kpi.enumerated(){
@@ -59,7 +61,6 @@ class ScoringViewController: UIViewController {
                                 self.allScore.append("")
                                 self.scoreTags.append(tag)
                                 tag += 1
-                            
                             }
                             // เพิ่มหัวข้อ
                             self.mTopicArray.append(kpi[index].name)
@@ -77,11 +78,17 @@ class ScoringViewController: UIViewController {
     
     @IBAction func onClickSubmit(){
         var indexScore = 0
+        self.scores = []
         for (index, _) in self.mSubTopicArray.enumerated(){
             self.scores.append([])
             for (index2, _) in self.mSubTopicArray[index].enumerated(){
-                self.scores[index].append(self.allScore[indexScore])
-                indexScore += 1
+                let score = self.allScore[indexScore]
+                if score == ""{
+                    self.alertMessage(title: "Can not submit.", msg: "Please fill all scores.")
+                }else{
+                    self.scores[index].append(score)
+                    indexScore += 1
+                }
             }
         }
     }
@@ -89,9 +96,15 @@ class ScoringViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let targetVC = segue.destination as? SummaryScoreViewController{
             targetVC.actualScore = self.scores
+            targetVC.KpiForm = self.KpiForm
         }
     }
-
+    
+    func alertMessage(title: String, msg: String){
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
@@ -124,11 +137,11 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mTopicArray.count
     }
-    
 }
 
 extension ScoringViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print("end: \(textField.text)")
         let indexOf = self.scoreTags.firstIndex(of:textField.tag)
         if(textField.tag == scoreTags[indexOf!]){
             if( indexOf! <= (self.allScore.count - 1)){
@@ -136,5 +149,6 @@ extension ScoringViewController: UITextFieldDelegate{
             }
             self.allScore.insert(textField.text!, at: indexOf!)
         }
+        print(self.allScore)
     }
 }
