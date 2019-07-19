@@ -25,6 +25,7 @@
 		AD05857822CBBDAB00B36010 /* ScoringViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857722CBBDAB00B36010 /* ScoringViewControllerMock.swift */; };
 		AD05857A22CBBE1F00B36010 /* ScoringTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */; };
 		AD06892822D4BB8400D5CADC /* KpiFormResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD06892722D4BB8400D5CADC /* KpiFormResponse.swift */; };
+		AD13B30522E0CCD0000694E6 /* KpiRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13B30422E0CCD0000694E6 /* KpiRateTableViewCell.swift */; };
 		AD2E8FA822DC6DC200B282A7 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E8FA722DC6DC200B282A7 /* ScoringViewController.swift */; };
 		AD5DB79422CCEEEC007B4E46 /* Scoring_Mock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */; };
 		AD76BCD922DE22150050FBF9 /* SummaryScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76BCD822DE22150050FBF9 /* SummaryScoreViewController.swift */; };
@@ -78,6 +79,7 @@
 		AD05857722CBBDAB00B36010 /* ScoringViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewControllerMock.swift; sourceTree = "<group>"; };
 		AD05857922CBBE1F00B36010 /* ScoringTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTableViewCell.swift; sourceTree = "<group>"; };
 		AD06892722D4BB8400D5CADC /* KpiFormResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpiFormResponse.swift; sourceTree = "<group>"; };
+		AD13B30422E0CCD0000694E6 /* KpiRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KpiRateTableViewCell.swift; sourceTree = "<group>"; };
 		AD2E8FA722DC6DC200B282A7 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		AD5DB79322CCEEEB007B4E46 /* Scoring_Mock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scoring_Mock.storyboard; sourceTree = "<group>"; };
 		AD76BCD822DE22150050FBF9 /* SummaryScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryScoreViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				8CF3716222D5931D00D689F0 /* AdminTableViewCell.swift */,
 				AD76BCDA22DE2DF70050FBF9 /* SummaryScoreTableViewCell.swift */,
 				8C9A185622E0669A002B1940 /* KPIscoreTableViewCell.swift */,
+				AD13B30422E0CCD0000694E6 /* KpiRateTableViewCell.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				AD76E16322CD6D550024F139 /* PopUpViewController.swift in Sources */,
 				AD76E16122CD5E7D0024F139 /* SummaryViewController.swift in Sources */,
 				ADEAD25B22CA5456005FC1FA /* AppDelegate.swift in Sources */,
+				AD13B30522E0CCD0000694E6 /* KpiRateTableViewCell.swift in Sources */,
 				8CB10C2E22CE5C6A00D428AA /* DropTableViewCell.swift in Sources */,
 				AD05857822CBBDAB00B36010 /* ScoringViewControllerMock.swift in Sources */,
 				AD06892822D4BB8400D5CADC /* KpiFormResponse.swift in Sources */,

@@ -30,6 +30,7 @@ class ScoringViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mNameLable.text = self.name
+        
         feedData()
     }
     
@@ -93,10 +94,29 @@ class ScoringViewController: UIViewController {
         }
     }
     
+    @IBAction func showPopup(_ sender: AnyObject) {
+        print("show popup")
+        let popOverVC = self.storyboard!.instantiateViewController(withIdentifier: "sbPopUpID") as! PopUpViewController
+        self.addChild(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParent: self)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let targetVC = segue.destination as? SummaryScoreViewController{
-            targetVC.actualScore = self.scores
-            targetVC.KpiForm = self.KpiForm
+        switch segue.identifier {
+        case "summary_kpi":
+            let targetVC = segue.destination as! SummaryScoreViewController
+                targetVC.actualScore = self.scores
+                targetVC.KpiForm = self.KpiForm
+                targetVC.name = self.name
+
+        case "sbPopUpID":
+            let targetPopup = segue.destination as! PopUpViewController
+                targetPopup.kpiForm = self.KpiForm
+
+        default: break
         }
     }
     
@@ -137,6 +157,15 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mTopicArray.count
     }
+    
+//    func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
+//    {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+//            headerView.backgroundColor = UIColor.yellow
+//            headerView.tintColor = UIColor.blue
+//
+//        return headerView
+//    }
 }
 
 extension ScoringViewController: UITextFieldDelegate{
