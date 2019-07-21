@@ -15,7 +15,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     //Mock2
     var KpiForm: [TopicList] = []
     var mSubTopicArray: [[String]] = []
-      var mTopicArray: [String] = []
+    var mTopicArray: [String] = []
+    var indexOfTopic: Int = 0
+    var mFullScore: [[String]] = []
     
   
     
@@ -26,6 +28,8 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     var SelectedIndex = -1
     var isCoolapce = false
+    
+   
     
     //Chart
     var formatter: ChartFormatter = ChartFormatter()
@@ -99,9 +103,18 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             cell.mLineChartView.gridBackgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             
             //Actual
+//
+//            let finalValue = GetUser2[indexPath.row]
+//            let AcValue1 = finalValue.finalActualScore
+//            let RcValue1 = finalValue.finalRatingScore
+//            print(finalValue)
             
-            let values1: [Double] = [19,18,17,16,15,14,13,12]
+
+            let values1: [Double] = [65,90,90]
+//            let values1: [Double] = [Double(AcValue1)]
             var dataEntries1: [ChartDataEntry] = []
+        
+    
             
             for i in 0..<ChartFormatter.dataPoints.count {
                 let dataEntry1 = ChartDataEntry(x: Double(i) , y: values1[i])
@@ -121,8 +134,9 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             //end Actual
             
-            // Start Prepare Score
-            let values2: [Double] = [29,28,27,26,25,24,23,22]
+//             Start Prepare Score
+//            let values2: [Double] = [Double(RcValue1)]
+            let values2: [Double] = [3,5,5]
             var dataEntries2: [ChartDataEntry] = []
             
             for i in 0..<ChartFormatter.dataPoints.count {
@@ -157,25 +171,39 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             
             // Assign Data
             cell.mLineChartView.data = chartData
-            
             return cell
+        
         }else{
             
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
+                //              let item = GetUser[indexPath.row - 2]
             
-            //              let item = GetUser[indexPath.row - 2]
+//            let item = GetUser[indexPath.row - 2]
             
-            let item = GetUser2[indexPath.row - 2]
-//            let item2 = Getuser3[indexPath.row - 2]
-           
+            let item2 = GetUser2[indexPath.row - 2]
+
             cell.mYear.text! = yearArr[indexPath.row - 2]
-            cell.mActualScore.text = "\(item.finalActualScore)"
-            cell.mKPI.text = "\(item.finalRatingScore)"
+            cell.mActualScore.text = "\(item2.finalActualScore)"
+            cell.mKPI.text = "\(item2.finalRatingScore)"
         
             mTableView.rowHeight = UITableView.automaticDimension
+           
             return cell
             
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
+            if indexOfTopic < self.mTopicArray.count{
+            cell2.Title.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
+            cell2.Actual.text = self.mFullScore[self.indexOfTopic][indexPath.row]
+            if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
+            self.indexOfTopic += 1
+                }
+            }
+             return cell2
+            
+            
+            
+            
 //            if indexOfTopic < self.mTopicArray.count{
 //                cell2.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
 //                cell2.mFullScoreLabel.text = self.mFullScore[self.indexOfTopic][indexPath.row]
@@ -183,7 +211,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 //                    self.indexOfTopic += 1
 //                }
 //            }
-            
+//
 //            cell2.mScore.delegate = self
 //            if self.tagForTextField < self.scoreTags.count {
 //                cell2.mScore.tag = self.tagForTextField
@@ -253,7 +281,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             }
         }
         
-        print("\(GetUser2)")
+//        print("\(GetUser2)")
     }
     
     func feedData2(){
@@ -266,17 +294,17 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                     self.KpiForm = kpi
                     
                     var tag = 0
-                    for (index, _) in kpi.enumerated(){
-                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
-                        self.mSubTopicArray.append([])
-
-                        for(index2, _) in kpi[index].subTopicList.enumerated(){
-                            let subTopic = kpi[index].subTopicList[index2].name
-                            self.mSubTopicArray[index].append(subTopic)
-                        }
-                        // เพิ่มหัวข้อ
-                        self.mTopicArray.append(kpi[index].name)
-                    }
+//                    for (index, _) in kpi.enumerated(){
+//                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
+//                        self.mSubTopicArray.append([])
+//
+//                        for(index2, _) in kpi[index].subTopicList.enumerated(){
+//                            let subTopic = kpi[index].subTopicList[index2].name
+//                            self.mSubTopicArray[index].append(subTopic)
+//                        }
+//                        // เพิ่มหัวข้อ
+//                        self.mTopicArray.append(kpi[index].name)
+//                    }
                     // เพื่อรีเฟรชตาราง
                     self.mTableView.reloadData()
                 }catch{
@@ -294,7 +322,10 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
 public class ChartFormatter: NSObject, IAxisValueFormatter{
     
     //    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
-    static var dataPoints: [String] = ["2019","2018","2017"]
+    
+//    static var dataPoints: [String] = ["2019","2018","2017"]
+    static var dataPoints: [String] = ["2019","2018"]
+    
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String{
         return ChartFormatter.dataPoints[Int(value)]
