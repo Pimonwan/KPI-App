@@ -3,10 +3,13 @@ import Alamofire
 import Charts
 import DynamicColor
 
-class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class UserHistoryViewController: UIViewController {
     
     
     @IBOutlet weak var mTableView: UITableView!
+    @IBOutlet weak var mLineChartView: LineChartView!
+    @IBOutlet weak var mName: UILabel!
+    @IBOutlet weak var mID: UILabel!
     
     //Mock
     var GetUser : [GetUserKPI] = []
@@ -29,8 +32,6 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     var SelectedIndex = -1
     var isCoolapce = false
     
-   
-    
     //Chart
     var formatter: ChartFormatter = ChartFormatter()
     var xaxis: XAxis = XAxis()
@@ -39,76 +40,48 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         feedData()
-        feedData2()
-        //        self.createLineChart()
+        self.createLineChart()
+        UserDetail()
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let row = indexPath.row
-        if row == 0 {return 100}
-        if row == 1 {return 220}
-        else{
-            if self.SelectedIndex == indexPath.row && isCoolapce == true
-            {
-                return 335
-            }else{
-                return 72
-            }
-        }
+    func UserDetail(){
+        mName.text! = name
+        mID.text! = id
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let row = self.GetUser2.count + 2
-        return row
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        //name
-        if row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailViewCell") as! UserDetailTableViewCell
-            cell.mName.text! = name
-            cell.mID.text! = id
-            return cell
-        }
         
         //Chart
-        if row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartViewCell") as! ChartTableViewCell
-            
-            
-            
+    func createLineChart(){
+      
             // Common configures
-            cell.mLineChartView.noDataText = "You need to provide data for the chart."
-            cell.mLineChartView.chartDescription?.text = ""
-            cell.mLineChartView.chartDescription?.font = UIFont.boldSystemFont(ofSize: 10)
-            cell.mLineChartView.chartDescription?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            mLineChartView.noDataText = "You need to provide data for the chart."
+            mLineChartView.chartDescription?.text = ""
+            mLineChartView.chartDescription?.font = UIFont.boldSystemFont(ofSize: 10)
+            mLineChartView.chartDescription?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             
-            cell.mLineChartView.leftAxis.enabled = true;
-            cell.mLineChartView.leftAxis.axisLineColor = #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
-            cell.mLineChartView.leftAxis.gridColor =  #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
-            cell.mLineChartView.leftAxis.labelTextColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.57)
-            cell.mLineChartView.rightAxis.enabled = false;
-            cell.mLineChartView.xAxis.enabled = true;
-            cell.mLineChartView.xAxis.gridColor =   #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
-            cell.mLineChartView.xAxis.labelPosition = .bottom
-            cell.mLineChartView.xAxis.labelTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.3)
+            mLineChartView.leftAxis.enabled = true;
+            mLineChartView.leftAxis.axisLineColor = #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
+            mLineChartView.leftAxis.gridColor =  #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
+            mLineChartView.leftAxis.labelTextColor =  #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.57)
+            mLineChartView.rightAxis.enabled = false;
+            mLineChartView.xAxis.enabled = true;
+            mLineChartView.xAxis.gridColor =   #colorLiteral(red: 0.6156862745, green: 0.5725490196, blue: 0.4470588235, alpha: 1).withAlphaComponent(0.12)
+            mLineChartView.xAxis.labelPosition = .bottom
+            mLineChartView.xAxis.labelTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.3)
             
             // Common Animation
-            cell.mLineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
+            mLineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
             
             // Set Background Color
-            cell.mLineChartView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            cell.mLineChartView.gridBackgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            mLineChartView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            mLineChartView.gridBackgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             
             //Actual
-//
+
 //            let finalValue = GetUser2[indexPath.row]
 //            let AcValue1 = finalValue.finalActualScore
 //            let RcValue1 = finalValue.finalRatingScore
-//            print(finalValue)
-            
+        
+        
 
             let values1: [Double] = [65,90,90]
 //            let values1: [Double] = [Double(AcValue1)]
@@ -145,7 +118,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             }
             
             // Set X-Axis Label
-            cell.mLineChartView.xAxis.valueFormatter = formatter
+            mLineChartView.xAxis.valueFormatter = formatter
             
             let chartDataSet2 = LineChartDataSet(entries: dataEntries2, label: "Score")
             
@@ -170,96 +143,13 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
             chartDataSet2.colors = [UIColor(hexString: "#0000FF")]
             
             // Assign Data
-            cell.mLineChartView.data = chartData
-            return cell
-        
-        }else{
-            
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
-                //              let item = GetUser[indexPath.row - 2]
-            
-//            let item = GetUser[indexPath.row - 2]
-            
-            let item2 = GetUser2[indexPath.row - 2]
-
-            cell.mYear.text! = yearArr[indexPath.row - 2]
-            cell.mActualScore.text = "\(item2.finalActualScore)"
-            cell.mKPI.text = "\(item2.finalRatingScore)"
-        
-            mTableView.rowHeight = UITableView.automaticDimension
-           
-            return cell
-            
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
-            if indexOfTopic < self.mTopicArray.count{
-            cell2.Title.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
-            cell2.Actual.text = self.mFullScore[self.indexOfTopic][indexPath.row]
-            if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
-            self.indexOfTopic += 1
-                }
-            }
-             return cell2
-            
-            
-            
-            
-//            if indexOfTopic < self.mTopicArray.count{
-//                cell2.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
-//                cell2.mFullScoreLabel.text = self.mFullScore[self.indexOfTopic][indexPath.row]
-//                if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
-//                    self.indexOfTopic += 1
-//                }
-//            }
-//
-//            cell2.mScore.delegate = self
-//            if self.tagForTextField < self.scoreTags.count {
-//                cell2.mScore.tag = self.tagForTextField
-//                self.tagForTextField += 1
-//            }
-//            return cell2'
-            
-
-            
-        }
+            mLineChartView.data = chartData
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        //        let row = indexPath.row
-        //        if row == 0 {self.isCoolapce == false}
-        //        if row == 1 {self.isCoolapce == false}
-        //        else{
-        if SelectedIndex == indexPath.row
-        {
-            if self.isCoolapce == false
-            {
-                self.isCoolapce = true
-            }else{
-                self.isCoolapce = false
-            }
-        }else{
-            self.isCoolapce = true
-        }
-        self.SelectedIndex = indexPath.row
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    //        }
-    
-    
-    
-    //    Alamofire.request(.GET, requestUrl, parameters:parameters, headers: headers)
-    //    .responseJSON
-    
-    
-    
-    func feedData()
-    {
+
+    func feedData(){
         
-        let headers: HTTPHeaders = [
-            "id": "1"
-        ]
+        let headers: HTTPHeaders = ["id": "1"]
         
         AF.request("http://localhost:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
             switch response.result{
@@ -271,7 +161,6 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                     
                     let data = result.data
                     self.GetUser2 = data
-                    
                     self.mTableView.reloadData()
                 }catch{
                     
@@ -280,42 +169,93 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
                 print("network error: \(error.localizedDescription)")
             }
         }
-        
-//        print("\(GetUser2)")
+    }
+}
+    
+//    func feedData2(){
+//        AF.request("http://localhost:8081/kpi/5", method: .get).responseJSON { (response) in
+//            switch response.result{
+//            case .success :
+//                do{
+//                    let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
+//                    let kpi = result.data.topicList
+//                    self.KpiForm = kpi
+//
+//                    var tag = 0
+////                    for (index, _) in kpi.enumerated(){
+////                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
+////                        self.mSubTopicArray.append([])
+////
+////                        for(index2, _) in kpi[index].subTopicList.enumerated(){
+////                            let subTopic = kpi[index].subTopicList[index2].name
+////                            self.mSubTopicArray[index].append(subTopic)
+////                        }
+////                        // เพิ่มหัวข้อ
+////                        self.mTopicArray.append(kpi[index].name)
+////                    }
+//                    // เพื่อรีเฟรชตาราง
+//                    self.mTableView.reloadData()
+//                }catch{
+//
+//                }
+//            case .failure(let error):
+//                print("network error: \(error.localizedDescription)")
+//            }
+
+
+
+extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.SelectedIndex == indexPath.row && isCoolapce == true
+        {
+            return 335
+        }else{
+            return 72
+        }
     }
     
-    func feedData2(){
-        AF.request("http://localhost:8081/kpi/5", method: .get).responseJSON { (response) in
-            switch response.result{
-            case .success :
-                do{
-                    let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
-                    let kpi = result.data.topicList
-                    self.KpiForm = kpi
-                    
-                    var tag = 0
-//                    for (index, _) in kpi.enumerated(){
-//                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
-//                        self.mSubTopicArray.append([])
-//
-//                        for(index2, _) in kpi[index].subTopicList.enumerated(){
-//                            let subTopic = kpi[index].subTopicList[index2].name
-//                            self.mSubTopicArray[index].append(subTopic)
-//                        }
-//                        // เพิ่มหัวข้อ
-//                        self.mTopicArray.append(kpi[index].name)
-//                    }
-                    // เพื่อรีเฟรชตาราง
-                    self.mTableView.reloadData()
-                }catch{
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let row = self.GetUser2.count
+        return row
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
+        
+        
+        let item2 = GetUser2[indexPath.row]
+        
+        cell.mYear.text! = yearArr[indexPath.row]
+        cell.mActualScore.text = "\(item2.finalActualScore)"
+        cell.mKPI.text = "\(item2.finalRatingScore)"
+        
+        mTableView.rowHeight = UITableView.automaticDimension
+        
+        return cell}
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        
+            if SelectedIndex == indexPath.row
+            {
+                if self.isCoolapce == false
+                {
+                    self.isCoolapce = true
+                }else{
+                    self.isCoolapce = false
                 }
-            case .failure(let error):
-                print("network error: \(error.localizedDescription)")
+            }else{
+                self.isCoolapce = true
             }
+            self.SelectedIndex = indexPath.row
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
-}
-}
+    }
+    
+    
+
     
 
 @objc(ChartFormatter)
