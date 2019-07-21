@@ -205,53 +205,76 @@ class UserHistoryViewController: UIViewController {
 
 
 extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.SelectedIndex == indexPath.row && isCoolapce == true
-        {
-            return 335
-        }else{
-            return 72
-        }
-    }
     
+    //   Header(Section)
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let Header = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
+//
+////        let item2 = GetUser2[indexPath.row]
+////
+////        cell.mYear.text! = yearArr[indexPath.row]
+////        cell.mActualScore.text = "\(item2.finalActualScore)"
+////        cell.mKPI.text = "\(item2.finalRatingScore)"
+////
+////        mTableView.rowHeight = UITableView.automaticDimension
+//
+//        let item2 = GetUser2[section]
+//
+//        Header.mYear.text! = yearArr[section]
+//        Header.mActual.text = "\(item2.finalActualScore)"
+//        Header.mKPI.text = "\(item2.finalRatingScore)"
+//
+//        mTableView.rowHeight = UITableView.automaticDimension
+//
+//        return Header
+//    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         let row = self.GetUser2.count
         return row
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if self.SelectedIndex == indexPath.row && isCoolapce == true
+//        {
+//            return 335
+//        }else{
+//            return 72
+//        }
+        return 335
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DropViewCell") as! DropTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
         
+        return cell
+      }
         
-        let item2 = GetUser2[indexPath.row]
-        
-        cell.mYear.text! = yearArr[indexPath.row]
-        cell.mActualScore.text = "\(item2.finalActualScore)"
-        cell.mKPI.text = "\(item2.finalRatingScore)"
-        
-        mTableView.rowHeight = UITableView.automaticDimension
-        
-        return cell}
-        
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-        
-            if SelectedIndex == indexPath.row
-            {
-                if self.isCoolapce == false
-                {
-                    self.isCoolapce = true
-                }else{
-                    self.isCoolapce = false
-                }
-            }else{
-                self.isCoolapce = true
-            }
-            self.SelectedIndex = indexPath.row
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            tableView.deselectRow(at: indexPath, animated: true)
+//
+//            if SelectedIndex == indexPath.row
+//            {
+//                if self.isCoolapce == false
+//                {
+//                    self.isCoolapce = true
+//                }else{
+//                    self.isCoolapce = false
+//                }
+//            }else{
+//                self.isCoolapce = true
+//            }
+//            self.SelectedIndex = indexPath.row
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+//        }
     }
     
     
@@ -263,8 +286,8 @@ public class ChartFormatter: NSObject, IAxisValueFormatter{
     
     //    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
     
-//    static var dataPoints: [String] = ["2019","2018","2017"]
-    static var dataPoints: [String] = ["2019","2018"]
+    static var dataPoints: [String] = ["2019","2018","2017"]
+
     
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String{
