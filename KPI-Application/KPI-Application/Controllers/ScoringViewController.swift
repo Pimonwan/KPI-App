@@ -29,9 +29,10 @@ class ScoringViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mNameLable.text = self.name
+        self.title = "Scoring Page"
         
-        feedData()
+        self.mNameLable.text = self.name
+        self.feedData()
     }
     
         func feedData(){
@@ -42,7 +43,7 @@ class ScoringViewController: UIViewController {
                         let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
                         let kpi = result.data.topicList
                         self.KpiForm = kpi
-                        
+
                         var tag = 0
                         for (index, _) in kpi.enumerated(){
                             // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
@@ -65,14 +66,17 @@ class ScoringViewController: UIViewController {
                             }
                             // เพิ่มหัวข้อ
                             self.mTopicArray.append(kpi[index].name)
+                            print(self.mTopicArray)
                         }
                         // เพื่อรีเฟรชตาราง
                         self.mTableView.reloadData()
                     }catch{
-    
+                        print("error")
                     }
                 case .failure(let error):
                     print("network error: \(error.localizedDescription)")
+                    self.alertMessage(title: "Network error.", msg: "Could not connect to the server.")
+//                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
@@ -87,8 +91,25 @@ class ScoringViewController: UIViewController {
                 if score == ""{
                     self.alertMessage(title: "Can not submit.", msg: "Please fill all scores.")
                 }else{
-                    self.scores[index].append(score)
-                    indexScore += 1
+                    let isLower = self.KpiForm[index].subTopicList[index2].isLowerBetter
+                    if isLower == 1 {
+                        let full = Int(self.KpiForm[index].subTopicList[index2].rate1)!
+                        if Int(score)! < 0 || Int(score)! > full {
+                            self.alertMessage(title: "Can not submit.", msg: "Some scores not correct.")
+                        }else{
+                            self.scores[index].append(score)
+                            indexScore += 1
+                        }
+                    }else{
+                        let full = Int(self.KpiForm[index].subTopicList[index2].rate5)!
+                        if Int(score)! < 0 || Int(score)! > full {
+                            self.alertMessage(title: "Can not submit.", msg: "Some scores not correct.")
+                        }else{
+                            self.scores[index].append(score)
+                            indexScore += 1
+                        }
+                    }
+                    
                 }
             }
         }
@@ -101,7 +122,6 @@ class ScoringViewController: UIViewController {
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParent: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,9 +142,17 @@ class ScoringViewController: UIViewController {
     
     func alertMessage(title: String, msg: String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        if title.elementsEqual("Network error."){
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(action:UIAlertAction!) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+        }else{
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        }
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
@@ -135,6 +163,10 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! ScoringTableViewCell
         if indexOfTopic < self.mTopicArray.count{
+            let isLower = self.KpiForm[indexOfTopic].subTopicList[indexPath.row].isLowerBetter
+            if isLower == 1 {
+                cell.mSubTopic.textColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            }
             cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
             cell.mFullScoreLabel.text = self.mFullScore[self.indexOfTopic][indexPath.row]
             if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
@@ -158,19 +190,17 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
         return self.mTopicArray.count
     }
     
-//    func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
-//    {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-//            headerView.backgroundColor = UIColor.yellow
-//            headerView.tintColor = UIColor.blue
-//
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel!.textColor = UIColor.black
+            header.textLabel?.font = UIFont(name: "Kanit", size: 17)
+        }
+    }
+  
 }
 
 extension ScoringViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end: \(textField.text)")
         let indexOf = self.scoreTags.firstIndex(of:textField.tag)
         if(textField.tag == scoreTags[indexOf!]){
             if( indexOf! <= (self.allScore.count - 1)){
@@ -181,3 +211,4 @@ extension ScoringViewController: UITextFieldDelegate{
         print(self.allScore)
     }
 }
+

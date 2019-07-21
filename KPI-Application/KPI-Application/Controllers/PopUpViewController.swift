@@ -22,19 +22,27 @@ class PopUpViewController: UIViewController {
     var mWeightArray: [[Int]] = []
     var indexOfTopic: Int = 0
     
+    
+    var selectedindex : Int = 0
 
     override func viewDidLoad() {
-//        print("kpiForm : \(self.kpiForm)")
-        
         super.viewDidLoad()
-        
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        
         self.showAnimate()
         prepareDataForTableView()
-//         view.backgroundColor = UIColor.black
-//         self.navigationItem.backBarButtonItem=nil;
+        
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
+        view.addGestureRecognizer(pinch)
+        
+        print("topic : \(self.mTopicArray)")
+        print("sub topic : \(self.mSubTopicArray)")
+    }
+    
+    @objc func handlePinch(sender: UIPinchGestureRecognizer){
+        guard sender.view != nil else { return }
+        if sender.state == .began || sender.state == .changed {
+            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+            sender.scale = 1
+        }
     }
     
     @IBAction func closePopUp(sender: AnyObject) {
@@ -94,8 +102,6 @@ class PopUpViewController: UIViewController {
         }, completion:{(finished : Bool)  in
             if (finished)
             {
-//                self.view.removeFromSuperview()
-//                self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
         });
@@ -109,7 +115,11 @@ extension PopUpViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "kpi_rate_table") as! KpiRateTableViewCell
         if indexOfTopic < self.mTopicArray.count{
+            
+            print("topic : \(self.indexOfTopic)")
+            print("index : \(indexPath.row)")
             print(self.mSubTopicArray[self.indexOfTopic][indexPath.row])
+            
             cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
             cell.mRate1.text = self.mRate1Array[self.indexOfTopic][indexPath.row]
             cell.mRate2.text = self.mRate2Array[self.indexOfTopic][indexPath.row]
@@ -132,5 +142,16 @@ extension PopUpViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mTopicArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+ 
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel!.font = UIFont.boldSystemFont(ofSize: 13)
+            header.textLabel!.textColor = UIColor.black
+            header.textLabel?.font = UIFont(name: "Kanit", size: 13)
+        }
     }
 }

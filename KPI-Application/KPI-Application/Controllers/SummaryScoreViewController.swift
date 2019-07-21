@@ -22,8 +22,7 @@ class SummaryScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("actual : \(self.actualScore)")
-        print("kpi: \(self.KpiForm)")
+        self.title = "Summary Score"
         self.mName.text = self.name
         prepareDataForTableView()
     }
@@ -98,8 +97,12 @@ class SummaryScoreViewController: UIViewController {
     
     @IBAction func onClickSaveBtn(){
         let data = prepareDataForPost(actual: self.actualScore, kpiRate: self.scores)
-        postScore(body: data
-        )    }
+        print("data : \(data)")
+        postScore(body: data)
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+    }
     
     func postScore(body: [String:Any]){
         let headers: HTTPHeaders = ["Content-Type": "application/json", "id" : "1", "user_id": "1"]
@@ -147,6 +150,10 @@ extension SummaryScoreViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "summary_table_cell") as! SummaryScoreTableViewCell
         if indexOfTopic < self.mTopicArray.count{
+            let isLower = self.KpiForm[indexOfTopic].subTopicList[indexPath.row].isLowerBetter
+            if isLower == 1 {
+                cell.mSubTopic.textColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            }
             cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
             cell.mActual.text = self.actualScore[self.indexOfTopic][indexPath.row]
             cell.mScore.text = "\(self.scores[self.indexOfTopic][indexPath.row])"
@@ -164,5 +171,12 @@ extension SummaryScoreViewController: UITableViewDelegate, UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mTopicArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel!.textColor = UIColor.black
+            header.textLabel?.font = UIFont(name: "Kanit", size: 17)
+        }
     }
 }

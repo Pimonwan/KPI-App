@@ -1,8 +1,4 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
 //
-//   let kpiFormResponse = try? newJSONDecoder().decode(KpiFormResponse.self, from: jsonData)
-
 //import Foundation
 //
 //// MARK: - KpiFormResponse
@@ -63,11 +59,6 @@
 //}
 
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let kpiFormResponse = try? newJSONDecoder().decode(KpiFormResponse.self, from: jsonData)
-
 import Foundation
 
 // MARK: - KpiFormResponse
@@ -81,7 +72,7 @@ struct DataClass: Codable {
     let id: Int
     let name: String
     let topicList: [TopicList]
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name
         case topicList = "topic_list"
@@ -93,7 +84,7 @@ struct TopicList: Codable {
     let id: Int
     let name: String
     let subTopicList: [SubTopicList]
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name
         case subTopicList = "sub_topic_list"
@@ -106,7 +97,7 @@ struct SubTopicList: Codable {
     let name, rate1, rate2, rate3: String
     let rate4, rate5, rateUnit: String
     let isLowerBetter, weight: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, rate1, rate2, rate3, rate4, rate5
         case rateUnit = "rate_unit"
