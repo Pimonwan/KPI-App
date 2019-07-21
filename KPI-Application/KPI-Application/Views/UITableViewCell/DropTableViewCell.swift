@@ -13,7 +13,7 @@ class DropTableViewCell: UITableViewCell {
     @IBOutlet weak var mYear: UILabel!
     @IBOutlet weak var mActualScore: UILabel!
     @IBOutlet weak var mKPI: UILabel!
-    
+    @IBOutlet weak var mTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,6 +15,7 @@ class KPIscoreTableViewCell: UITableViewCell {
     @IBOutlet weak var Score: UILabel!
     @IBOutlet weak var Remark: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -38,6 +38,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mTableView.rowHeight = 44;
         feedData()
         feedData2()
         //        self.createLineChart()
@@ -65,6 +66,7 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
+        print("row : \(row)")
         //name
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailViewCell") as! UserDetailTableViewCell
@@ -76,8 +78,6 @@ class UserHistoryViewController: UIViewController,UITableViewDataSource,UITableV
         //Chart
         if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartViewCell") as! ChartTableViewCell
-            
-            
             
             // Common configures
             cell.mLineChartView.noDataText = "You need to provide data for the chart."

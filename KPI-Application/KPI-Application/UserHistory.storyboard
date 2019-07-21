@@ -272,6 +272,10 @@
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="iMB-Qh-H7O" id="mOv-dW-020"/>
+                                                        <outlet property="delegate" destination="iMB-Qh-H7O" id="dbV-8j-P5E"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -279,13 +283,14 @@
                                         <connections>
                                             <outlet property="mActualScore" destination="xFR-4f-CsH" id="2gO-Jp-5jo"/>
                                             <outlet property="mKPI" destination="mLu-Dj-1SD" id="112-oj-K7w"/>
+                                            <outlet property="mTableView" destination="SlB-oK-wFp" id="Mld-yB-vNT"/>
                                             <outlet property="mYear" destination="4mp-bg-wCM" id="vv7-Ye-elj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="iMB-Qh-H7O" id="Kb3-yd-6Db"/>
-                                    <outlet property="delegate" destination="iMB-Qh-H7O" id="CWp-KH-eVP"/>
+                                    <outlet property="dataSource" destination="iMB-Qh-H7O" id="D9Q-77-om4"/>
+                                    <outlet property="delegate" destination="iMB-Qh-H7O" id="bxr-hv-n1b"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -299,7 +304,7 @@
                         <viewLayoutGuide key="safeArea" id="pdI-Nn-aNC"/>
                     </view>
                     <connections>
-                        <outlet property="mTableView" destination="k0d-v8-goY" id="Q5d-A9-VOh"/>
+                        <outlet property="mTableView" destination="k0d-v8-goY" id="v9g-xg-RuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExJ-5O-Yo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
