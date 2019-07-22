@@ -29,31 +29,22 @@ class KPI_ApplicationUITests1: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+//        textField.typeText("35")
+//        textField = tablesQuery.cells.containing(.staticText, identifier:"Innovation").children(matching: .textField).element
+//        textField.tap()
+//        textField.typeText("7")
+//        tablesQuery.cells.containing(.staticText, identifier:"Presentation").children(matching: .textField).element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"Practice and Teamwork").children(matching: .textField).element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"Unit Test Coverage").children(matching: .textField).element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"Automate Testign").children(matching: .textField).element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"On time delivery (Story point deviation)").children(matching: .textField).element.tap()
+//        tablesQuery.cells.containing(.staticText, identifier:"Product Demo").children(matching: .textField).element.tap()
+//        textField.tap()
+//        tablesQuery.buttons["Submit"].tap()
+//        tablesQuery.buttons["Save"].tap()
         
-        let app = XCUIApplication()
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Scoring Page"]/*[[".cells.staticTexts[\"Scoring Page\"]",".staticTexts[\"Scoring Page\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Pimonwan Sutmee"]/*[[".cells.staticTexts[\"Pimonwan Sutmee\"]",".staticTexts[\"Pimonwan Sutmee\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let element = app.otherElements.containing(.navigationBar, identifier:"Scoring Page").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
-        element.children(matching: .textField).element(boundBy: 0).tap()
-        element.children(matching: .textField).element(boundBy: 0).typeText("35")
-        element.children(matching: .textField).element(boundBy: 1).tap()
-        element.children(matching: .textField).element(boundBy: 1).typeText("7")
-        element.children(matching: .textField).element(boundBy: 2).tap()
-        element.children(matching: .textField).element(boundBy: 2).typeText("8")
-        element.children(matching: .textField).element(boundBy: 3).tap()
-        element.children(matching: .textField).element(boundBy: 3).typeText("8")
-        element.children(matching: .textField).element(boundBy: 4).tap()
-        element.children(matching: .textField).element(boundBy: 4).typeText("80")
-        element.children(matching: .textField).element(boundBy: 5).tap()
-        element.children(matching: .textField).element(boundBy: 5).typeText("80")
-        element.children(matching: .textField).element(boundBy: 6).tap()
-        element.children(matching: .textField).element(boundBy: 6).typeText("5")
-        element.children(matching: .textField).element(boundBy: 7).tap()
-        element.children(matching: .textField).element(boundBy: 7).typeText("8")
-        app.buttons["Submit"].tap()
-        app.buttons["Save"].tap()
         
     }
 
