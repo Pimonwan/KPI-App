@@ -10,6 +10,11 @@ import UIKit
 
 class KPIscoreTableViewCell: UITableViewCell {
     
+    
+    @IBOutlet weak var mYear: UILabel!
+    @IBOutlet weak var mActual: UILabel!
+    @IBOutlet weak var mKPI: UILabel!
+    
     @IBOutlet weak var Title: UILabel!
     @IBOutlet weak var Actual: UILabel!
     @IBOutlet weak var Score: UILabel!
