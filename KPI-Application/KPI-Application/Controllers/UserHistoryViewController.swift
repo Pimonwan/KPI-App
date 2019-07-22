@@ -12,17 +12,18 @@ class UserHistoryViewController: UIViewController {
     @IBOutlet weak var mID: UILabel!
     
     //Mock
-    var GetUser : [GetUserKPI] = []
+    var GetUser : [UserHistory] = []
     var GetUser2: [Datum] = []
     var Getuser3: [ScoreHistoryList] = []
+    var newestHistory: [ScoreHistoryList] = []
+    var actualScores: [[Int]] = []
+    var ratingScores: [[Int]] = []
+    var remarks: [[String]] = []
+    
     //Mock2
     var KpiForm: [TopicList] = []
     var mSubTopicArray: [[String]] = []
     var mTopicArray: [String] = []
-    var indexOfTopic: Int = 0
-    var mFullScore: [[String]] = []
-    
-  
     
     //Data
     var yearArr = ["2019","2018","2017"]
@@ -39,10 +40,7 @@ class UserHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mTableView.rowHeight = 44;
-        feedData()
-        self.getKpiForm()
-        
+        self.feedData()
         self.createLineChart()
         UserDetail()
     }
@@ -149,24 +147,36 @@ class UserHistoryViewController: UIViewController {
             mLineChartView.data = chartData
     }
     
-
     func feedData(){
-        
+        self.getKpiForm()
+//        self.getUserScore()
+//        self.prepareDataForTable()
+    }
+    
+
+    func getUserScore(){
         let headers: HTTPHeaders = ["id": "1"]
-        
         AF.request("http://localhost:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
             switch response.result{
             case .success :
                 do{
-                    let result = try JSONDecoder().decode(GetUserKPI.self, from: response.data!)
-//                    self.GetUser = [result.self]
+                    print(response.debugDescription)
+                    let result = try JSONDecoder().decode(UserHistory.self, from: response.data!)
+//                    let data = result.data
 //
-                    
-                    let data = result.data
-                    self.GetUser2 = data
-                    self.mTableView.reloadData()
+//                    let newDate = data[0].updatedAt
+//                    for (index, _) in data.enumerated(){
+//                        print(data[index].scoreHistoryList)
+//                        if data[index].updatedAt >= newDate && data[index].scoreHistoryList.count != 0{
+//                            print(data[index].updatedAt)
+//                            self.newestHistory = data[index].scoreHistoryList
+//                        }
+//                    }
+//                    self.GetUser2 = data
+//                    self.mTableView.reloadData()
+//                    print("nn : \(self.newestHistory)")
                 }catch{
-                    
+                    print("error1")
                 }
             case .failure(let error):
                 print("network error: \(error.localizedDescription)")
@@ -182,24 +192,19 @@ class UserHistoryViewController: UIViewController {
                     let result = try JSONDecoder().decode(KpiFormResponse.self, from: response.data!)
                     let kpi = result.data.topicList
                     self.KpiForm = kpi
-                    
-                    var tag = 0
                     for (index, _) in kpi.enumerated(){
-                        // การเพิ่มข้อมูลครั้งแรกจำเป็นต้องเพิ่มอาเรย์เปล่าก่อนที่จะเพิ่มข้อมูล
                         self.mSubTopicArray.append([])
-                        self.mFullScore.append([])
                         for(index2, _) in kpi[index].subTopicList.enumerated(){
-
-                            // เพิ่มหัวข้อย่อยลงในอาเรย์
                             let subTopic = kpi[index].subTopicList[index2].name
                             self.mSubTopicArray[index].append(subTopic)
-                            tag += 1
                         }
-                        // เพิ่มหัวข้อ
                         self.mTopicArray.append(kpi[index].name)
-                        print(self.mTopicArray)
                     }
-                    // เพื่อรีเฟรชตาราง
+                    
+                    print(self.newestHistory)
+                    
+                    self.prepareDataForTable()
+                    
                     self.mTableView.reloadData()
                     let cell = self.mTableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
                     cell.mTableView.reloadData()
@@ -211,6 +216,38 @@ class UserHistoryViewController: UIViewController {
                 print("network error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func prepareDataForTable(){
+        print("sub : \(self.KpiForm)")
+        print("new : \(self.newestHistory)")
+        
+        for (index, _) in self.KpiForm.enumerated(){
+            print("---------------------> \(index)")
+            self.actualScores.append([])
+            self.ratingScores.append([])
+            self.remarks.append([])
+            let topicId = self.KpiForm[index].id
+            for (index2, _) in self.KpiForm[index].subTopicList.enumerated(){
+                let subTopicId = self.KpiForm[index].subTopicList[index2].id
+                print("topicId : \(topicId)")
+                print("subId : \(subTopicId)")
+                for (i, _) in self.newestHistory.enumerated(){
+                    if self.newestHistory[i].topicID == topicId && self.newestHistory[i].subTopicID == subTopicId{
+                        print(self.newestHistory[i].actualScore)
+                        print(self.newestHistory[i].ratingScore)
+                        
+//                        self.actualScores[index].append(self.newestHistory[i].actualScore)
+//                        self.ratingScores[index].append(self.newestHistory[i].ratingScore)
+//                        self.remarks[index].append(self.newestHistory[i].remark)
+                    }
+                }
+            }
+            print(self.actualScores)
+            print(self.ratingScores)
+        }
+        print(self.actualScores)
+        print(self.ratingScores)
     }
 }
 
@@ -263,9 +300,9 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
-            return 1
+            return self.yearArr.count
         }else{
-            return 1
+            return self.mSubTopicArray[section].count
         }
     }
     
@@ -286,15 +323,14 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
         }
     }
     
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "miniKpiScoreView") as! kpiScoreMiniTableViewCell
-            cell.mTitle.text = "Pimonwan"
+            cell.mTitle.text = self.mSubTopicArray[indexPath.section][indexPath.row]
+            
             return cell
         }
       }

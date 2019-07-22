@@ -17,7 +17,6 @@ class ScoringViewController: UIViewController {
     var mSubTopicArray: [[String]] = []
     var mFullScore: [[String]] = []
     var mScore: [String] = []
-    var indexOfTopic: Int = 0
     
     var KpiForm: [TopicList] = []
     
@@ -162,17 +161,12 @@ extension ScoringViewController: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "custom") as! ScoringTableViewCell
-        if indexOfTopic < self.mTopicArray.count{
-            let isLower = self.KpiForm[indexOfTopic].subTopicList[indexPath.row].isLowerBetter
-            if isLower == 1 {
-                cell.mSubTopic.textColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-            }
-            cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
-            cell.mFullScoreLabel.text = self.mFullScore[self.indexOfTopic][indexPath.row]
-            if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
-                self.indexOfTopic += 1
-            }
+        let isLower = self.KpiForm[indexPath.section].subTopicList[indexPath.row].isLowerBetter
+        if isLower == 1 {
+            cell.mSubTopic.textColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         }
+        cell.mSubTopic.text = self.mSubTopicArray[indexPath.section][indexPath.row]
+        cell.mFullScoreLabel.text = self.mFullScore[indexPath.section][indexPath.row]
 
         cell.mScore.delegate = self
         if self.tagForTextField < self.scoreTags.count {

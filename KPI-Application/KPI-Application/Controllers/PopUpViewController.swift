@@ -20,8 +20,6 @@ class PopUpViewController: UIViewController {
     var mRate4Array: [[String]] = []
     var mRate5Array: [[String]] = []
     var mWeightArray: [[Int]] = []
-    var indexOfTopic: Int = 0
-    
     
     var selectedindex : Int = 0
 
@@ -32,9 +30,7 @@ class PopUpViewController: UIViewController {
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(sender:)))
         view.addGestureRecognizer(pinch)
-        
-        print("topic : \(self.mTopicArray)")
-        print("sub topic : \(self.mSubTopicArray)")
+
     }
     
     @objc func handlePinch(sender: UIPinchGestureRecognizer){
@@ -114,25 +110,14 @@ extension PopUpViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "kpi_rate_table") as! KpiRateTableViewCell
-        if indexOfTopic < self.mTopicArray.count{
-            
-            print("topic : \(self.indexOfTopic)")
-            print("index : \(indexPath.row)")
-            print(self.mSubTopicArray[self.indexOfTopic][indexPath.row])
-            
-            cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
-            cell.mRate1.text = self.mRate1Array[self.indexOfTopic][indexPath.row]
-            cell.mRate2.text = self.mRate2Array[self.indexOfTopic][indexPath.row]
-            cell.mRate3.text = self.mRate3Array[self.indexOfTopic][indexPath.row]
-            cell.mRate4.text = self.mRate4Array[self.indexOfTopic][indexPath.row]
-            cell.mRate5.text = self.mRate5Array[self.indexOfTopic][indexPath.row]
-            cell.mWeight.text = "\(self.mWeightArray[self.indexOfTopic][indexPath.row])"
-            
-            if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
-                self.indexOfTopic += 1
-            }
-        }
-        
+        cell.mSubTopic.text = self.mSubTopicArray[indexPath.section][indexPath.row]
+        cell.mRate1.text = self.mRate1Array[indexPath.section][indexPath.row]
+        cell.mRate2.text = self.mRate2Array[indexPath.section][indexPath.row]
+        cell.mRate3.text = self.mRate3Array[indexPath.section][indexPath.row]
+        cell.mRate4.text = self.mRate4Array[indexPath.section][indexPath.row]
+        cell.mRate5.text = self.mRate5Array[indexPath.section][indexPath.row]
+        cell.mWeight.text = "\(self.mWeightArray[indexPath.section][indexPath.row])"
+
         return cell
     }
     

@@ -11,9 +11,7 @@ class SummaryScoreViewController: UIViewController {
     var totalScore: Double = 0
     var kpiRate: Double = 0
     var mTopicArray: [String] = []
-    var mSubTopicArray: [[String]] = []
-    var indexOfTopic: Int = 0
-    
+    var mSubTopicArray: [[String]] = []    
     
     @IBOutlet weak var mName: UILabel!
     @IBOutlet weak var mTableView: UITableView!
@@ -149,18 +147,13 @@ extension SummaryScoreViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "summary_table_cell") as! SummaryScoreTableViewCell
-        if indexOfTopic < self.mTopicArray.count{
-            let isLower = self.KpiForm[indexOfTopic].subTopicList[indexPath.row].isLowerBetter
+            let isLower = self.KpiForm[indexPath.section].subTopicList[indexPath.row].isLowerBetter
             if isLower == 1 {
                 cell.mSubTopic.textColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
             }
-            cell.mSubTopic.text = self.mSubTopicArray[self.indexOfTopic][indexPath.row]
-            cell.mActual.text = self.actualScore[self.indexOfTopic][indexPath.row]
-            cell.mScore.text = "\(self.scores[self.indexOfTopic][indexPath.row])"
-            if indexPath.row == self.mSubTopicArray[self.indexOfTopic].count - 1{
-                self.indexOfTopic += 1
-            }
-        }
+            cell.mSubTopic.text = self.mSubTopicArray[indexPath.section][indexPath.row]
+            cell.mActual.text = self.actualScore[indexPath.section][indexPath.row]
+            cell.mScore.text = "\(self.scores[indexPath.section][indexPath.row])"
         
         return cell
     }
