@@ -29,22 +29,7 @@ class KPI_ApplicationUITests1: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-
-//        textField.typeText("35")
-//        textField = tablesQuery.cells.containing(.staticText, identifier:"Innovation").children(matching: .textField).element
-//        textField.tap()
-//        textField.typeText("7")
-//        tablesQuery.cells.containing(.staticText, identifier:"Presentation").children(matching: .textField).element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"Practice and Teamwork").children(matching: .textField).element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"Unit Test Coverage").children(matching: .textField).element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"Automate Testign").children(matching: .textField).element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"On time delivery (Story point deviation)").children(matching: .textField).element.tap()
-//        tablesQuery.cells.containing(.staticText, identifier:"Product Demo").children(matching: .textField).element.tap()
-//        textField.tap()
-//        tablesQuery.buttons["Submit"].tap()
-//        tablesQuery.buttons["Save"].tap()
-        
-        
+       
         
     }
 

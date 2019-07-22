@@ -13,7 +13,11 @@ class AdminScoring{
     
     
     func addUserScore(){
-        scoringScreen.iClickScoringPage()
+        scoringScreen.iClickScoringPageAndTypeScore()
         
+    }
+    
+    func addUserScoreFailed(){
+        scoringScreen.iClickScoringPage()
     }
 }
