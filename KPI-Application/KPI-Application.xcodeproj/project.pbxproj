@@ -92,6 +92,11 @@
 		ADEAD26022CA5456005FC1FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD25E22CA5456005FC1FA /* Main.storyboard */; };
 		ADEAD26222CA5457005FC1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD26122CA5457005FC1FA /* Assets.xcassets */; };
 		ADEAD26522CA5457005FC1FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADEAD26322CA5457005FC1FA /* LaunchScreen.storyboard */; };
+		E31ECDA122E590C80068CDD2 /* ScoringScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA022E590C80068CDD2 /* ScoringScreen.swift */; };
+		E31ECDA322E590F60068CDD2 /* AdminScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA222E590F60068CDD2 /* AdminScreen.swift */; };
+		E31ECDA522E591ED0068CDD2 /* UserHistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA422E591ED0068CDD2 /* UserHistoryScreen.swift */; };
+		E31ECDA722E5926D0068CDD2 /* ScoringTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA622E5926D0068CDD2 /* ScoringTestSuite.swift */; };
+		E31ECDA922E596440068CDD2 /* AdminScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA822E596440068CDD2 /* AdminScoring.swift */; };
 		E39D9B8722DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D9B8622DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +171,11 @@
 		ADEAD26122CA5457005FC1FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADEAD26422CA5457005FC1FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADEAD26622CA5457005FC1FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E31ECDA022E590C80068CDD2 /* ScoringScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringScreen.swift; sourceTree = "<group>"; };
+		E31ECDA222E590F60068CDD2 /* AdminScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminScreen.swift; sourceTree = "<group>"; };
+		E31ECDA422E591ED0068CDD2 /* UserHistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryScreen.swift; sourceTree = "<group>"; };
+		E31ECDA622E5926D0068CDD2 /* ScoringTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringTestSuite.swift; sourceTree = "<group>"; };
+		E31ECDA822E596440068CDD2 /* AdminScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminScoring.swift; sourceTree = "<group>"; };
 		E39D9B8422DF2E8100F4DE1D /* KPI-ApplicationUITests1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KPI-ApplicationUITests1.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39D9B8622DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPI_ApplicationUITests1.swift; sourceTree = "<group>"; };
 		E39D9B8822DF2E8100F4DE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -346,9 +356,54 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E31ECD9B22E590530068CDD2 /* testcases */ = {
+			isa = PBXGroup;
+			children = (
+				E31ECDA622E5926D0068CDD2 /* ScoringTestSuite.swift */,
+			);
+			path = testcases;
+			sourceTree = "<group>";
+		};
+		E31ECD9C22E590630068CDD2 /* keywords */ = {
+			isa = PBXGroup;
+			children = (
+				E31ECD9F22E590900068CDD2 /* features */,
+				E31ECD9E22E590780068CDD2 /* models */,
+				E31ECD9D22E590700068CDD2 /* screens */,
+			);
+			path = keywords;
+			sourceTree = "<group>";
+		};
+		E31ECD9D22E590700068CDD2 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				E31ECDA022E590C80068CDD2 /* ScoringScreen.swift */,
+				E31ECDA222E590F60068CDD2 /* AdminScreen.swift */,
+				E31ECDA422E591ED0068CDD2 /* UserHistoryScreen.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		E31ECD9E22E590780068CDD2 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E31ECD9F22E590900068CDD2 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				E31ECDA822E596440068CDD2 /* AdminScoring.swift */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
 		E39D9B8522DF2E8100F4DE1D /* KPI-ApplicationUITests1 */ = {
 			isa = PBXGroup;
 			children = (
+				E31ECD9C22E590630068CDD2 /* keywords */,
+				E31ECD9B22E590530068CDD2 /* testcases */,
 				E39D9B8622DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift */,
 				E39D9B8822DF2E8100F4DE1D /* Info.plist */,
 			);
@@ -626,6 +681,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E39D9B8722DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift in Sources */,
+				E31ECDA322E590F60068CDD2 /* AdminScreen.swift in Sources */,
+				E31ECDA722E5926D0068CDD2 /* ScoringTestSuite.swift in Sources */,
+				E31ECDA122E590C80068CDD2 /* ScoringScreen.swift in Sources */,
+				E31ECDA522E591ED0068CDD2 /* UserHistoryScreen.swift in Sources */,
+				E31ECDA922E596440068CDD2 /* AdminScoring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
