@@ -149,7 +149,7 @@ class UserHistoryViewController: UIViewController {
     
     func feedData(){
         self.getKpiForm()
-//        self.getUserScore()
+        self.getUserScore()
 //        self.prepareDataForTable()
     }
     
@@ -162,8 +162,9 @@ class UserHistoryViewController: UIViewController {
                 do{
                     print(response.debugDescription)
                     let result = try JSONDecoder().decode(UserHistory.self, from: response.data!)
-//                    let data = result.data
-//
+                    let data = result.data
+                    self.GetUser2 = data
+                    self.mTableView.reloadData()
 //                    let newDate = data[0].updatedAt
 //                    for (index, _) in data.enumerated(){
 //                        print(data[index].scoreHistoryList)
@@ -258,13 +259,13 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let Header = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
 //
-////        let item2 = GetUser2[indexPath.row]
-////
-////        cell.mYear.text! = yearArr[indexPath.row]
-////        cell.mActualScore.text = "\(item2.finalActualScore)"
-////        cell.mKPI.text = "\(item2.finalRatingScore)"
-////
-////        mTableView.rowHeight = UITableView.automaticDimension
+//        let item2 = GetUser2[indexPath.row]
+//
+//        cell.mYear.text! = yearArr[indexPath.row]
+//        cell.mActualScore.text = "\(item2.finalActualScore)"
+//        cell.mKPI.text = "\(item2.finalRatingScore)"
+//
+//        mTableView.rowHeight = UITableView.automaticDimension
 //
 //        let item2 = GetUser2[section]
 //
@@ -291,7 +292,7 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
 //            return 72
 //        }
         if tableView.tag == 0 {
-            return 300
+            return 500
         }else{
             return 50
         }
@@ -300,7 +301,8 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
-            return self.yearArr.count
+//            return self.yearArr.count
+            return self.GetUser2.count
         }else{
             return self.mSubTopicArray[section].count
         }
@@ -316,7 +318,7 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView.tag == 100 {
-            print(self.mTopicArray.count)
+//            print(self.mTopicArray.count)
             return self.mTopicArray.count
         }else{
             return 1
@@ -326,6 +328,14 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
+            let item2 = GetUser2[indexPath.row]
+            
+            cell.mYear.text! = yearArr[indexPath.row]
+            cell.mActual.text = "\(item2.finalActualScore)"
+            cell.mKPI.text = "\(item2.finalRatingScore)"
+            
+            mTableView.rowHeight = UITableView.automaticDimension
+
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "miniKpiScoreView") as! kpiScoreMiniTableViewCell
@@ -335,23 +345,23 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
         }
       }
         
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//
-//            if SelectedIndex == indexPath.row
-//            {
-//                if self.isCoolapce == false
-//                {
-//                    self.isCoolapce = true
-//                }else{
-//                    self.isCoolapce = false
-//                }
-//            }else{
-//                self.isCoolapce = true
-//            }
-//            self.SelectedIndex = indexPath.row
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+
+            if SelectedIndex == indexPath.row
+            {
+                if self.isCoolapce == false
+                {
+                    self.isCoolapce = true
+                }else{
+                    self.isCoolapce = false
+                }
+            }else{
+                self.isCoolapce = true
+            }
+            self.SelectedIndex = indexPath.row
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     

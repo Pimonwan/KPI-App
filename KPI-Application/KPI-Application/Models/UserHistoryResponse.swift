@@ -84,7 +84,7 @@ import Foundation
 
 // MARK: - UserHistoryResponse
 struct UserHistory: Codable {
-    let historyStatus: Status
+//    let historyStatus: Status
     let data: [Datum]
 }
 
