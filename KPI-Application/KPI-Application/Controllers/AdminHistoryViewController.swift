@@ -10,7 +10,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
   //mock
-    var GetUser: [Da] = []
+    var GetUser: [Ddatum] = []
     
 //    var UserArray = [User]()
 //    var currentUserArray = [User]()
@@ -53,14 +53,14 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
 //    }
     
     func feedData(){
-        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/1", method: .get).responseJSON
+        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/11", method: .get).responseJSON
             { (response) in
                 
                 switch response.result{
                 case .success:
                     
                     do{
-                        let result = try JSONDecoder().decode(GetUserName.self, from: response.data!)
+                        let result = try JSONDecoder().decode(UserProfile.self, from: response.data!)
                         let data = result.data
                         print(data)
                         self.GetUser = data
