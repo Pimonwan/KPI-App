@@ -11,7 +11,7 @@ class ScoringScreen{
     private lazy var app = XCUIApplication()
     private lazy var celllistTodo:XCUIElementQuery = app.tables.cells
     private lazy var scoringTab = app/*@START_MENU_TOKEN@*/.staticTexts["Scoring Page"]/*[[".cells.staticTexts[\"Scoring Page\"]",".staticTexts[\"Scoring Page\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-    private lazy var chooseFisrtUser = app.cells.containing(.staticText, identifier:"Pimonwan Sutmee").staticTexts["89503"]
+    private lazy var chooseFisrtUser = app.cells.firstMatch
     private lazy var Presentation = app.tables.cells.containing(.staticText, identifier:"Presentation").children(matching: .textField).element
     private lazy var Tech = app.tables.cells.containing(.staticText, identifier:"Tech Testing").children(matching: .textField).element
     private lazy var Innovation = app.tables.cells.containing(.staticText, identifier:"Innovation").children(matching: .textField).element
@@ -22,14 +22,14 @@ class ScoringScreen{
     private lazy var PDdemo = app.tables.cells.containing(.staticText, identifier:"Product Demo").children(matching: .textField).element
     private lazy var submit = app.tables.buttons["Submit"]
 
-    private lazy var Techtxt1 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 0)
-    private lazy var Techtxt2 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 1)
-    private lazy var Techtxt3 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 2)
-    private lazy var Techtxt4 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 3)
-    private lazy var Techtxt5 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 4)
-    private lazy var Techtxt6 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 5)
-    private lazy var Techtxt7 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 6)
-    private lazy var Techtxt8 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 7)
+    private lazy var TechScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 0)
+    private lazy var InnovationScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 1)
+    private lazy var PresentationScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 2)
+    private lazy var TeamworkScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 3)
+    private lazy var UnitTestScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 4)
+    private lazy var AutomateTestScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 5)
+    private lazy var OntimeScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 6)
+    private lazy var ProductDemoScore = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 7)
     private lazy var KPIRate = app.tables.staticTexts.element(boundBy: 5)
     private lazy var TotalScore = app.tables.staticTexts.element(boundBy: 6)
     private lazy var save = app.tables.buttons["Save"]
@@ -85,14 +85,14 @@ class ScoringScreen{
     }
     
     func verifySuccessCase(){
-        XCTAssertEqual(Techtxt1.label, "2")
-        XCTAssertEqual(Techtxt2.label, "4")
-        XCTAssertEqual(Techtxt3.label, "4")
-        XCTAssertEqual(Techtxt4.label, "4")
-        XCTAssertEqual(Techtxt5.label, "4")
-        XCTAssertEqual(Techtxt6.label, "4")
-        XCTAssertEqual(Techtxt7.label, "3")
-        XCTAssertEqual(Techtxt8.label, "4")
+        XCTAssertEqual(TechScore.label, "2")
+        XCTAssertEqual(InnovationScore.label, "4")
+        XCTAssertEqual(PresentationScore.label, "4")
+        XCTAssertEqual(TeamworkScore.label, "4")
+        XCTAssertEqual(UnitTestScore.label, "4")
+        XCTAssertEqual(AutomateTestScore.label, "4")
+        XCTAssertEqual(OntimeScore.label, "3")
+        XCTAssertEqual(ProductDemoScore.label, "4")
         XCTAssertEqual(KPIRate.label, "3.5")
         XCTAssertEqual(TotalScore.label, "70.0")
         save.tap()

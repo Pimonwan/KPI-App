@@ -155,7 +155,7 @@ class UserHistoryViewController: UIViewController {
 
     func getUserScore(){
         let headers: HTTPHeaders = ["id": "1"]
-        AF.request("http://localhost:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
+        AF.request("http://192.168.111.96:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
             switch response.result{
             case .success :
                 do{
@@ -174,7 +174,7 @@ class UserHistoryViewController: UIViewController {
     }
     
     func getKpiForm(){
-        AF.request("http://localhost:8081/kpi/5", method: .get).responseJSON { (response) in
+        AF.request("http://192.168.111.96:8081/kpi/5", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
