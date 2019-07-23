@@ -152,6 +152,9 @@
                                                                 </subviews>
                                                             </tableViewCellContentView>
                                                             <connections>
+                                                                <outlet property="mActual" destination="rmm-L4-4a2" id="t5x-7x-Nst"/>
+                                                                <outlet property="mKPI" destination="Kz8-pE-X8z" id="5tx-Ya-yks"/>
+                                                                <outlet property="mRemark" destination="Mru-c3-PjP" id="Vog-Tm-Udj"/>
                                                                 <outlet property="mTitle" destination="t15-Dy-krT" id="XzF-Az-FYf"/>
                                                             </connections>
                                                         </tableViewCell>
