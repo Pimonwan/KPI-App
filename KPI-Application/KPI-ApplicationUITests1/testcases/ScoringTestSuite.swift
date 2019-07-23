@@ -18,7 +18,28 @@ class ScoringTestSuite:KPI_ApplicationUITests1{
         }
     }
     
-    func test_scoring_002_networkFailed(){
+    func test_scoring_002_cannotsubmit(){
+        XCTContext.runActivity(named: "Cannot submit") { _ in
+            adminScoring.submitFillnotFull()
+            sleep(3)
+        }
+    }
+    
+    func test_scoring_003_cannotsubmit2(){
+        XCTContext.runActivity(named: "Fill incorrect data") { _ in
+            adminScoring.submitFillIncorrect()
+            sleep(3)
+        }
+    }
+    
+    func test_scoring_004_ratebuttonclickable(){
+        XCTContext.runActivity(named: "Rate button is clickable") { _ in
+            adminScoring.rateisclickable()
+            sleep(3)
+        }
+    }
+    
+    func test_scoring_008_networkFailed(){
         XCTContext.runActivity(named: "Network Failed") { _ in
             adminScoring.addUserScoreFailed()
             sleep(3)

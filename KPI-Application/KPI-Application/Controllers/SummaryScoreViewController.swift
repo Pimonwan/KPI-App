@@ -104,7 +104,7 @@ class SummaryScoreViewController: UIViewController {
     
     func postScore(body: [String:Any]){
         let headers: HTTPHeaders = ["Content-Type": "application/json", "id" : "1", "user_id": "1"]
-        AF.request("http://192.168.43.230:8081/kpi/score", method: .post, parameters: body, encoding: JSONEncoding.default ,headers: headers).responseJSON { (response) in
+        AF.request("http://localhost:8081/kpi/score", method: .post, parameters: body, encoding: JSONEncoding.default ,headers: headers).responseJSON { (response) in
             switch response.result{
             case .success:
                 print(response)

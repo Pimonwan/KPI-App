@@ -13,11 +13,29 @@ class AdminScoring{
     
     
     func addUserScore(){
-        scoringScreen.iClickScoringPageAndTypeScore()
+        scoringScreen.iClickScoringPageAndTypeScore(score1: "35", score2: "7", score3: "8", score4: "8", score5: "80", score6: "80", score7: "5", score8: "8")
+        scoringScreen.verifySuccessCase()
         
     }
     
     func addUserScoreFailed(){
         scoringScreen.iClickScoringPage()
+        scoringScreen.verifyNetworkError()
+    }
+    
+    func submitFillnotFull(){
+        scoringScreen.iClickScoringPageAndTypeScoreNotFull(score1: "35", score2: "7", score3: "8")
+        scoringScreen.verifyFillNotComplete()
+    }
+    
+    func submitFillIncorrect(){
+        scoringScreen.iClickScoringPageAndTypeScore(score1: "35", score2: "70", score3: "8", score4: "8", score5: "80", score6: "80", score7: "5", score8: "8")
+        scoringScreen.verifyAlertIncorrect()
+    }
+    
+    func rateisclickable(){
+        scoringScreen.iClickScoringPage()
+        scoringScreen.iClickRate()
+        scoringScreen.verifyPopup()
     }
 }
