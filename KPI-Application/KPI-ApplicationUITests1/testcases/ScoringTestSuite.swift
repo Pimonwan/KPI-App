@@ -14,7 +14,7 @@ class ScoringTestSuite:KPI_ApplicationUITests1{
     func test_scoring_001_success(){
         XCTContext.runActivity(named: "AddNewScore") { _ in
             adminScoring.addUserScore()
-            sleep(3)
+            
         }
     }
     
@@ -39,7 +39,7 @@ class ScoringTestSuite:KPI_ApplicationUITests1{
         }
     }
     
-    func test_scoring_008_networkFailed(){
+    func test_scoring_005_networkFailed(){
         XCTContext.runActivity(named: "Network Failed") { _ in
             adminScoring.addUserScoreFailed()
             sleep(3)

@@ -30,8 +30,8 @@ class ScoringScreen{
     private lazy var Techtxt6 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 5)
     private lazy var Techtxt7 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 6)
     private lazy var Techtxt8 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 7)
-    private lazy var Rate = app.tables.staticTexts.matching(identifier: "KPI Rate : 3.5").element
-    private lazy var TotalScore = app.tables.staticTexts.matching(identifier: "Total Score : 70.0").element
+    private lazy var KPIRate = app.tables.staticTexts.element(boundBy: 5)
+    private lazy var TotalScore = app.tables.staticTexts.element(boundBy: 6)
     private lazy var save = app.tables.buttons["Save"]
     //private lazy var popupVC = UIViewController(nibName: "PopUpView", bundle: nil)
     private lazy var rate = app.tables.buttons["Rate"]
@@ -93,8 +93,8 @@ class ScoringScreen{
         XCTAssertEqual(Techtxt6.label, "4")
         XCTAssertEqual(Techtxt7.label, "3")
         XCTAssertEqual(Techtxt8.label, "4")
-        XCTAssertEqual(Rate.label, "KPI Rate : 3.5")
-        XCTAssertEqual(TotalScore.label, "Total Score : 70.0")
+        XCTAssertEqual(KPIRate.label, "3.5")
+        XCTAssertEqual(TotalScore.label, "70.0")
         save.tap()
         sleep(3)
     }

@@ -6,4 +6,7 @@
 //  Copyright © 2562 พิมลวรรณ สุดมี. All rights reserved.
 //
 
-import Foundation
+import XCTest
+class AdminScreen{
+    
+}

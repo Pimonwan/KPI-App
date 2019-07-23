@@ -97,6 +97,8 @@
 		E31ECDA722E5926D0068CDD2 /* ScoringTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA622E5926D0068CDD2 /* ScoringTestSuite.swift */; };
 		E31ECDA922E596440068CDD2 /* AdminScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31ECDA822E596440068CDD2 /* AdminScoring.swift */; };
 		E39D9B8722DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D9B8622DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift */; };
+		E3E613EE22E6F2F100A2A29D /* HistoryTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E613ED22E6F2F100A2A29D /* HistoryTestSuite.swift */; };
+		E3E613F022E6F33B00A2A29D /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E613EF22E6F33B00A2A29D /* History.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,8 @@
 		E39D9B8422DF2E8100F4DE1D /* KPI-ApplicationUITests1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KPI-ApplicationUITests1.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39D9B8622DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPI_ApplicationUITests1.swift; sourceTree = "<group>"; };
 		E39D9B8822DF2E8100F4DE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3E613ED22E6F2F100A2A29D /* HistoryTestSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTestSuite.swift; sourceTree = "<group>"; };
+		E3E613EF22E6F33B00A2A29D /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				E31ECDA622E5926D0068CDD2 /* ScoringTestSuite.swift */,
+				E3E613ED22E6F2F100A2A29D /* HistoryTestSuite.swift */,
 			);
 			path = testcases;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				E31ECDA822E596440068CDD2 /* AdminScoring.swift */,
+				E3E613EF22E6F33B00A2A29D /* History.swift */,
 			);
 			path = features;
 			sourceTree = "<group>";
@@ -678,8 +684,10 @@
 			files = (
 				E39D9B8722DF2E8100F4DE1D /* KPI_ApplicationUITests1.swift in Sources */,
 				E31ECDA322E590F60068CDD2 /* AdminScreen.swift in Sources */,
+				E3E613F022E6F33B00A2A29D /* History.swift in Sources */,
 				E31ECDA722E5926D0068CDD2 /* ScoringTestSuite.swift in Sources */,
 				E31ECDA122E590C80068CDD2 /* ScoringScreen.swift in Sources */,
+				E3E613EE22E6F2F100A2A29D /* HistoryTestSuite.swift in Sources */,
 				E31ECDA522E591ED0068CDD2 /* UserHistoryScreen.swift in Sources */,
 				E31ECDA922E596440068CDD2 /* AdminScoring.swift in Sources */,
 			);

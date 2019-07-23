@@ -14,6 +14,7 @@ class AdminScoring{
     
     func addUserScore(){
         scoringScreen.iClickScoringPageAndTypeScore(score1: "35", score2: "7", score3: "8", score4: "8", score5: "80", score6: "80", score7: "5", score8: "8")
+        sleep(3)
         scoringScreen.verifySuccessCase()
         
     }
