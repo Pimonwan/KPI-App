@@ -89,8 +89,8 @@ class SummaryScoreViewController: UIViewController {
         self.totalScore = totalActual
         self.kpiRate = totalActual*5/100
         
-        self.mTotalScoreLabel.text = "Total Score : \(self.totalScore)"
-        self.mKpiRateLabel.text = "KPI Rate : \(self.kpiRate)"
+        self.mTotalScoreLabel.text = "\(self.totalScore)"
+        self.mKpiRateLabel.text = "\(self.kpiRate)"
     }
     
     @IBAction func onClickSaveBtn(){
