@@ -11,7 +11,10 @@ import UIKit
 class kpiScoreMiniTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mTitle: UILabel!
-
+    @IBOutlet weak var mActual: UILabel!
+    @IBOutlet weak var mKPI: UILabel!
+    @IBOutlet weak var mRemark: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -12,10 +12,10 @@ class UserHistoryViewController: UIViewController {
     @IBOutlet weak var mID: UILabel!
     
     //Mock
-    var GetUser : [UserHistory] = []
-    var GetUser2: [Datum] = []
-    var Getuser3: [ScoreHistoryList] = []
+    var GetUser: [Datum] = []
     var newestHistory: [ScoreHistoryList] = []
+    var FinalactualScores: [[Int]] = []
+    var FinalratingScores: [[Int]] = []
     var actualScores: [[Int]] = []
     var ratingScores: [[Int]] = []
     var remarks: [[String]] = []
@@ -26,7 +26,7 @@ class UserHistoryViewController: UIViewController {
     var mTopicArray: [String] = []
     
     //Data
-    var yearArr = ["2019","2018","2017"]
+    var yearArr = ["2019"]
     var name = "Thammanoon Wethanyaporn"
     var id = "12345"
     
@@ -160,11 +160,28 @@ class UserHistoryViewController: UIViewController {
             switch response.result{
             case .success :
                 do{
-                    print(response.debugDescription)
                     let result = try JSONDecoder().decode(UserHistory.self, from: response.data!)
                     let data = result.data
-                    self.GetUser2 = data
+                    self.GetUser = data
                     self.mTableView.reloadData()
+                    
+                    for (index, _) in data.enumerated(){
+                        self.actualScores.append([])
+                        let ACsc = data[index].scoreHistoryList[index].actualScore
+                            self.actualScores[index].append(ACsc)
+
+                    }
+                    
+                    for (index, _) in data.enumerated(){
+                        self.ratingScores.append([])
+                        let RTsc = data[index].scoreHistoryList[index].ratingScore
+                        self.ratingScores[index].append(RTsc)
+                        
+                        //            self.mTopicArray.append(kpi[index].name)
+                    }
+                    
+                    self.mTableView.reloadData()
+                    
 //                    let newDate = data[0].updatedAt
 //                    for (index, _) in data.enumerated(){
 //                        print(data[index].scoreHistoryList)
@@ -202,13 +219,13 @@ class UserHistoryViewController: UIViewController {
                         self.mTopicArray.append(kpi[index].name)
                     }
                     
-                    print(self.newestHistory)
+//                    print(self.newestHistory)
                     
-                    self.prepareDataForTable()
+//                    self.prepareDataForTable()
                     
                     self.mTableView.reloadData()
-                    let cell = self.mTableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
-                    cell.mTableView.reloadData()
+//                    let cell = self.mTableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
+//                    cell.mTableView.reloadData()
                     
                 }catch{
                     print("error")
@@ -219,70 +236,56 @@ class UserHistoryViewController: UIViewController {
         }
     }
     
-    func prepareDataForTable(){
-        print("sub : \(self.KpiForm)")
-        print("new : \(self.newestHistory)")
-        
-        for (index, _) in self.KpiForm.enumerated(){
-            print("---------------------> \(index)")
-            self.actualScores.append([])
-            self.ratingScores.append([])
-            self.remarks.append([])
-            let topicId = self.KpiForm[index].id
-            for (index2, _) in self.KpiForm[index].subTopicList.enumerated(){
-                let subTopicId = self.KpiForm[index].subTopicList[index2].id
-                print("topicId : \(topicId)")
-                print("subId : \(subTopicId)")
-                for (i, _) in self.newestHistory.enumerated(){
-                    if self.newestHistory[i].topicID == topicId && self.newestHistory[i].subTopicID == subTopicId{
-                        print(self.newestHistory[i].actualScore)
-                        print(self.newestHistory[i].ratingScore)
-                        
-//                        self.actualScores[index].append(self.newestHistory[i].actualScore)
-//                        self.ratingScores[index].append(self.newestHistory[i].ratingScore)
-//                        self.remarks[index].append(self.newestHistory[i].remark)
-                    }
-                }
-            }
-            print(self.actualScores)
-            print(self.ratingScores)
-        }
-        print(self.actualScores)
-        print(self.ratingScores)
-    }
+//    func prepareDataForTable(){
+////        print("sub : \(self.KpiForm)")
+////        print("new : \(self.newestHistory)")
+//
+//        for (index, _) in self.KpiForm.enumerated(){
+//            print("---------------------> \(index)")
+//            self.actualScores.append([])
+//            self.ratingScores.append([])
+//            self.remarks.append([])
+//            let topicId = self.KpiForm[index].id
+//            for (index2, _) in self.KpiForm[index].subTopicList.enumerated(){
+//                let subTopicId = self.KpiForm[index].subTopicList[index2].id
+//                print("topicId : \(topicId)")
+//                print("subId : \(subTopicId)")
+//                for (i, _) in self.newestHistory.enumerated(){
+//                    if self.newestHistory[i].topicID == topicId && self.newestHistory[i].subTopicID == subTopicId{
+//                        print(self.newestHistory[i].actualScore)
+//                        print(self.newestHistory[i].ratingScore)
+//
+////                        self.actualScores[index].append(self.newestHistory[i].actualScore)
+////                        self.ratingScores[index].append(self.newestHistory[i].ratingScore)
+////                        self.remarks[index].append(self.newestHistory[i].remark)
+//                    }
+//                }
+//            }
+//            print(self.actualScores)
+//            print(self.ratingScores)
+//        }
+//        print(self.actualScores)
+//        print(self.ratingScores)
+//    }
+    
+//    func prepareDataForTable(){
+//        let data = self.GetUser2
+//        for (index, _) in data.enumerated(){
+//            self.actualScores.append([])
+//            for(index2, _) in data[index].scoreHistoryList.enumerated(){
+//                let ACsc = data[index].scoreHistoryList[index2].actualScore
+//                self.actualScores[index].append(ACsc)
+//            }
+////            self.mTopicArray.append(kpi[index].name)
+//        }
+//        self.mTableView.reloadData()
+//    }
+    
+    
+    
 }
 
 extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
-    
-    //   Header(Section)
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let Header = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
-//
-//        let item2 = GetUser2[indexPath.row]
-//
-//        cell.mYear.text! = yearArr[indexPath.row]
-//        cell.mActualScore.text = "\(item2.finalActualScore)"
-//        cell.mKPI.text = "\(item2.finalRatingScore)"
-//
-//        mTableView.rowHeight = UITableView.automaticDimension
-//
-//        let item2 = GetUser2[section]
-//
-//        Header.mYear.text! = yearArr[section]
-//        Header.mActual.text = "\(item2.finalActualScore)"
-//        Header.mKPI.text = "\(item2.finalRatingScore)"
-//
-//        mTableView.rowHeight = UITableView.automaticDimension
-//
-//        return Header
-//    }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        let row = self.GetUser2.count
-//        return row
-//    }
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        if self.SelectedIndex == indexPath.row && isCoolapce == true
@@ -291,18 +294,24 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
 //        }else{
 //            return 72
 //        }
-        if tableView.tag == 0 {
+        
+        if tableView.tag == 0{
             return 500
         }else{
-            return 50
-        }
+            return 55
+            }
+        
+        
     }
+    
+//    tableView.tag == 0
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 0 {
 //            return self.yearArr.count
-            return self.GetUser2.count
+            return self.GetUser.count
         }else{
             return self.mSubTopicArray[section].count
         }
@@ -328,7 +337,7 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "KPIscore") as! KPIscoreTableViewCell
-            let item2 = GetUser2[indexPath.row]
+            let item2 = GetUser[indexPath.row]
             
             cell.mYear.text! = yearArr[indexPath.row]
             cell.mActual.text = "\(item2.finalActualScore)"
@@ -339,29 +348,34 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "miniKpiScoreView") as! kpiScoreMiniTableViewCell
+            
+//            let item = GetUser[indexPath.row + 7]
+
+            
             cell.mTitle.text = self.mSubTopicArray[indexPath.section][indexPath.row]
+//            cell.mActual.text = "\(self.actualScores[indexPath.row])"
+//            cell.mKPI.text = "\(self.ratingScores[indexPath.row])"
             
             return cell
         }
       }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-
-            if SelectedIndex == indexPath.row
+        tableView.deselectRow(at: indexPath, animated: true)
+        if SelectedIndex == indexPath.row
+        {
+            if self.isCoolapce == false
             {
-                if self.isCoolapce == false
-                {
-                    self.isCoolapce = true
-                }else{
-                    self.isCoolapce = false
-                }
-            }else{
                 self.isCoolapce = true
+            }else{
+                self.isCoolapce = false
             }
-            self.SelectedIndex = indexPath.row
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }else{
+            self.isCoolapce = true
         }
+        self.SelectedIndex = indexPath.row
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
     }
     
     
@@ -371,9 +385,7 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
 @objc(ChartFormatter)
 public class ChartFormatter: NSObject, IAxisValueFormatter{
     
-    //    static var dataPoints: [String] = ["2019","2018","2017","2016","2015","2014","2013","2012"]
-    
-    static var dataPoints: [String] = ["2019","2018","2017"]
+    static var dataPoints: [String] = ["2019"]
 
     
     
