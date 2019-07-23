@@ -23,7 +23,17 @@ class ScoringScreen{
     private lazy var submit = app.tables.buttons["Submit"]
     //private lazy var error = app.alerts.staticTexts as! String
 //    private lazy var score1 = app.tables.cells.containing(.staticText, identifier:"Tech Testing").firstMatch.value as! String
-
+    private lazy var Techtxt1 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 0)
+    private lazy var Techtxt2 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 1)
+    private lazy var Techtxt3 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 2)
+    private lazy var Techtxt4 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 3)
+    private lazy var Techtxt5 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 4)
+    private lazy var Techtxt6 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 5)
+    private lazy var Techtxt7 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 6)
+    private lazy var Techtxt8 = app.tables.cells.staticTexts.matching(identifier: "score").element(boundBy: 7)
+    private lazy var Rate = app.tables.staticTexts.matching(identifier: "KPI Rate : 3.5").element
+    private lazy var TotalScore = app.tables.staticTexts.matching(identifier: "Total Score : 70.0").element
+    private lazy var save = app.tables.buttons["Save"]
 
     
     func iClickScoringPageAndTypeScore(){
@@ -47,8 +57,19 @@ class ScoringScreen{
         PDdemo.typeText("8")
         Tech.tap()
         submit.tap()
-        //XCTAssertEqual("Tech Testing", score1)
-        
+        XCTAssertEqual(Techtxt1.label, "2")
+        XCTAssertEqual(Techtxt2.label, "4")
+        XCTAssertEqual(Techtxt3.label, "4")
+        XCTAssertEqual(Techtxt4.label, "4")
+        XCTAssertEqual(Techtxt5.label, "4")
+        XCTAssertEqual(Techtxt6.label, "4")
+        XCTAssertEqual(Techtxt7.label, "3")
+        XCTAssertEqual(Techtxt8.label, "4")
+        XCTAssertEqual(Rate.label, "KPI Rate : 3.5")
+        XCTAssertEqual(TotalScore.label, "Total Score : 70.0")
+        save.tap()
+        sleep(3)
+
     }
     
     func iClickScoringPage(){
