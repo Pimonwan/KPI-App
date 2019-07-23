@@ -10,5 +10,6 @@ target 'KPI-Application' do
   pod 'AlamofireImage', '~> 4.0.0-beta.3'
   pod 'Charts', '~> 3.3.0'
   pod 'DynamicColor'
+  pod 'MJRefresh', '~> 3.2'
 
 end

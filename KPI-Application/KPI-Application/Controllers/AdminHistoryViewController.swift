@@ -10,7 +10,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     
   //mock
-    var GetUser: [Da] = []
+    var GetUser: [Ddatum] = []
     
 //    var UserArray = [User]()
 //    var currentUserArray = [User]()
@@ -60,7 +60,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
                 case .success:
                     
                     do{
-                        let result = try JSONDecoder().decode(GetUserName.self, from: response.data!)
+                        let result = try JSONDecoder().decode(UserProfile.self, from: response.data!)
                         let data = result.data
                         print(data)
                         self.GetUser = data

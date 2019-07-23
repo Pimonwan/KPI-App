@@ -14,7 +14,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var mTableView : UITableView!
 //    let nameList = ["Pimonwan Sutmee", "Maneekan Yanvisit","Marut Maluleem","Nontapat Tapprasan","Thammanoon Wethanyaporn","Thanapong Supalak","Pattaragun Chimphet", "Olivia Sophia","Isabella Emma", "Emily Ava", "Abigail Madison", "Chloe Mia" ,"Lily Grace"]
     var selectedPerson: String = ""
-    var getUser: [Da] = []
+    var getUser: [Ddatum] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,14 @@ class UserViewController: UIViewController {
     }
     
     func feedData(){
-        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/11", method: .get).responseJSON
+        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/35", method: .get).responseJSON
             { (response) in
                 
                 switch response.result{
                 case .success:
                     
                     do{
-                        let result = try JSONDecoder().decode(GetUserName.self, from: response.data!)
+                        let result = try JSONDecoder().decode(UserProfile.self, from: response.data!)
                         let data = result.data
                         print(data)
                         self.getUser = data
