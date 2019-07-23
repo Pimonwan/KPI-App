@@ -6,12 +6,14 @@ PODS:
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
   - DynamicColor (4.1.0)
+  - MJRefresh (3.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
   - AlamofireImage (~> 4.0.0-beta.3)
   - Charts (~> 3.3.0)
   - DynamicColor
+  - MJRefresh (~> 3.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,13 +21,15 @@ SPEC REPOS:
     - AlamofireImage
     - Charts
     - DynamicColor
+    - MJRefresh
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
   AlamofireImage: 980b4eccaed1fa559d78bc479d067ff89d23bc95
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
   DynamicColor: e72fcf4174518c514e862bb4bdea794c1865b412
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
 
-PODFILE CHECKSUM: fc6a225b4145dffc7e6f25fb6ab1571682a91bd2
+PODFILE CHECKSUM: 3c527f13db5f53003e64cda54b1a283c240d493c
 
 COCOAPODS: 1.7.2
