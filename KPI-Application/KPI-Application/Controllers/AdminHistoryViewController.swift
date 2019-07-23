@@ -27,6 +27,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         super.viewDidLoad()
         setupSearchBar()
         alterLayout()
+        feedData()
 //        setUpUser()
     }
     
@@ -52,7 +53,7 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
 //    }
     
     func feedData(){
-AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/11", method: .get).responseJSON
+        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/1", method: .get).responseJSON
             { (response) in
                 
                 switch response.result{
@@ -61,9 +62,11 @@ AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/
                     do{
                         let result = try JSONDecoder().decode(GetUserName.self, from: response.data!)
                         let data = result.data
+                        print(data)
                         self.GetUser = data
                         self.AdminTableView.reloadData()
                     }catch{
+                        print("error1")
                     }
                 case .failure(let error):
                     print("network error: \(error.localizedDescription)")
@@ -111,7 +114,7 @@ AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell") as! AdminTableViewCell
         let item2 = GetUser[indexPath.row]
 
-        cell.name.text = item2.firstNameEn + item2.lastNameEn
+        cell.name.text = "\(item2.firstNameEn)  \(item2.lastNameEn)"
         cell.id.text = "\(item2.userID)"
 //        cell.Year.text! = currentUserArray[indexPath.row].year
 //        cell.name.text! = currentUserArray[indexPath.row].name
