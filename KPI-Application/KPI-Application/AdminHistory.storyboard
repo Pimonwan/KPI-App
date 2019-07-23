@@ -387,8 +387,8 @@
                         <viewLayoutGuide key="safeArea" id="5Kb-0c-RaW"/>
                     </view>
                     <connections>
-                        <outlet property="AdminTableView" destination="2yY-6c-S7X" id="imY-wT-R9D"/>
                         <outlet property="Search" destination="6K3-PC-Fzy" id="bsW-Bp-UeX"/>
+                        <outlet property="mTableView" destination="2yY-6c-S7X" id="H62-of-v0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t03-lZ-kBh" userLabel="First Responder" sceneMemberID="firstResponder"/>

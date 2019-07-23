@@ -1,70 +1,69 @@
 import UIKit
 import DynamicColor
 import Alamofire
+import MJRefresh
 
 class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     
-    @IBOutlet weak var AdminTableView: UITableView!
     @IBOutlet weak var Search: UISearchBar!
+    @IBOutlet weak var mTableView: UITableView!
     
     
   //mock
     var GetUser: [Ddatum] = []
-    
-//    var UserArray = [User]()
-//    var currentUserArray = [User]()
-    
+    var arr: [[String]] = []
     var searching = false
 //    var searchID = [String]()
     
     var SelectedIndex = -1
     var isCoolapce = false
-    
+    let mPageSize = 10
+    var mPageIndex = 1
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
         alterLayout()
-        feedData()
-//        setUpUser()
+        feedData(isRefresh: false)
+        setupLoadmore()
     }
     
-    //Data
+    func setupLoadmore(){
+        self.mTableView.mj_footer = MJRefreshAutoNormalFooter()
+        self.mTableView.mj_footer.setRefreshingTarget(self, refreshingAction: #selector(loadmore))
+    }
     
-//    private func setUpUser() {
-//        UserArray.append(User(name: "Pimonwan Sutmee", id: "12341", year: "2019"))
-//        UserArray.append(User(name: "Pimonwan Sutmee", id: "12341", year: "2018"))
-//        UserArray.append(User(name: "Maneekan Yanvisit", id: "34593", year: "2019"))
-//        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2019"))
-//        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2018"))
-//        UserArray.append(User(name: "Marut Maluleem", id: "34432", year: "2017"))
-//        UserArray.append(User(name: "Nontapat Tapprasan", id: "54321", year: "2019"))
-//        UserArray.append(User(name: "Thammanoon Wethanyaporn", id: "57321", year: "2019"))
-//        UserArray.append(User(name: "Thanapong Supalak", id: "57901", year: "2019"))
-//        UserArray.append(User(name: "Pattaragun Chimphet", id: "07901", year: "2019"))
-//        UserArray.append(User(name: "Olivia Sophia", id: "07671", year: "2019"))
-//        UserArray.append(User(name: "Isabella Emma", id: "08901", year: "2019"))
-//        UserArray.append(User(name: "Emily Ava", id: "12301", year: "2019"))
-//        UserArray.append(User(name: "Abigail Madison", id: "09321", year: "2019"))
-//
-//        currentUserArray = UserArray
-//    }
+    @objc func loadmore(){
+        feedData(isRefresh: false)
+    }
     
-    func feedData(){
-        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/1", method: .get).responseJSON
+    func feedData(isRefresh: Bool){
+        AF.request("http://ec2-52-221-195-185.ap-southeast-1.compute.amazonaws.com:8089/api/user/getProfileLists/\(mPageIndex)", method: .get).responseJSON
             { (response) in
                 
                 switch response.result{
                 case .success:
-                    
                     do{
                         let result = try JSONDecoder().decode(UserProfile.self, from: response.data!)
                         let data = result.data
-                        print(data)
-                        self.GetUser = data
-                        self.AdminTableView.reloadData()
+                        
+                        for (index, _) in data.enumerated(){
+//                            self.GetUser.append("\(data[index].firstNameEn) \(data[index].lastNameEn)")
+                        }
+                          self.GetUser.append(contentsOf: data as! [Ddatum])
+                        
+                        if data.count < self.mPageSize{
+                            self.mTableView.mj_footer.endRefreshingWithNoMoreData()//ถ้าcountเกินขึ้นnomredata
+                        }else{
+                            self.mTableView.mj_footer.endRefreshing()
+                            self.mPageIndex += 1
+                        }
+                        
+//                        self.mTableView.mj_header.endRefreshing()
+                        
+                        self.mTableView.reloadData()
                     }catch{
                         print("error1")
                     }
@@ -74,18 +73,15 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
                 }
         }
     }
-
-    
    
-    
     func setupSearchBar(){
         Search.delegate = self
     }
 
     func alterLayout() {
-        AdminTableView.tableHeaderView = UIView()
+        mTableView.tableHeaderView = UIView()
         // search bar in section header
-        AdminTableView.estimatedSectionHeaderHeight = 50
+        mTableView.estimatedSectionHeaderHeight = 50
         // search bar in navigation bar
         //navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.titleView = Search
@@ -112,17 +108,12 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdminCell") as! AdminTableViewCell
-        let item2 = GetUser[indexPath.row]
+//        let item2 = GetUser[indexPath.row]
 
-        cell.name.text = "\(item2.firstNameEn)  \(item2.lastNameEn)"
-        cell.id.text = "\(item2.userID)"
-//        cell.Year.text! = currentUserArray[indexPath.row].year
-//        cell.name.text! = currentUserArray[indexPath.row].name
-//        cell.id.text! = currentUserArray[indexPath.row].id
-        AdminTableView.rowHeight = UITableView.automaticDimension
-        
 
-        
+//        cell.id.text = "\(item2.userID)"
+        cell.name.text! = "\(GetUser[indexPath.row].firstNameEn)    \(GetUser[indexPath.row].lastNameEn)"
+        mTableView.rowHeight = UITableView.automaticDimension
             return cell
         }
     
@@ -144,27 +135,24 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
-    // Search Bar
+////     Search Bar
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //        if searchText.isEmpty
 //        {
 //        }
-//        currentUserArray = UserArray.filter({ User -> Bool in
-//            if User.id.range(of: searchText) != nil {
+//        arr = GetUser.filter({ User -> Bool in
+//            if GetUser.range(of: searchText) != nil {
 //                return true
 //            }
-//            if User.name.range(of: searchText) != nil {
-//                return true
-//            }
-//            if User.year.range(of: searchText) != nil {
-//                return true
-//            }
+////            if User.name.range(of: searchText) != nil {
+////                return true
+////            }
 //            else
 //            {
 //                return false
 //            }
-//            
-//            
+//
+//
 ////            switch searchBar.selectedScopeButtonIndex {
 ////            case 0:
 ////                if searchText.isEmpty { return true }
@@ -174,45 +162,21 @@ class AdminHistoryViewController: UIViewController,UITableViewDataSource,UITable
 ////                return false
 ////            }
 //        })
-//        AdminTableView.reloadData()
+//       mTableView.reloadData()
 //    }
-    
+//
 //    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
 //        switch selectedScope {
 //        case 0:
-//            currentUserArray = UserArray
+//            arr = [self.GetUser]
 //        default:
 //            break
 //        }
-//        AdminTableView.reloadData()
+//        mTableView.reloadData()
 //    }
 }
 
-class NAME {
-    let name: String
-    let image: String
-    let id: Int
-    let year: Int
-    
-    init(name: String, image: String, id:Int, year: Int) {
-        self.name = name
-        self.image = image
-        self.id = id
-        self.year = year
-    }
-}
+
 
 extension AdminHistoryViewController: UISearchBarDelegate {
 }
-
-//class User {
-//    let name: String
-//    let id: String
-//    let year: String
-//
-//    init(name: String, id: String, year: String) {
-//        self.name = name
-//        self.id = id
-//        self.year = year
-//    }
-//}
