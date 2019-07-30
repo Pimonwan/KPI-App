@@ -77,7 +77,7 @@ class UserHistoryViewController: UIViewController {
             
             //Actual
 
-//            let finalValue = GetUser2[indexPath.row]
+//            let finalValue = GetUser[indexPath.row]
 //            let AcValue1 = finalValue.finalActualScore
 //            let RcValue1 = finalValue.finalRatingScore
         
@@ -86,6 +86,7 @@ class UserHistoryViewController: UIViewController {
             let values1: [Double] = [65,90,90]
 //            let values1: [Double] = [Double(AcValue1)]
             var dataEntries1: [ChartDataEntry] = []
+    
         
     
             
@@ -147,15 +148,15 @@ class UserHistoryViewController: UIViewController {
     }
     
     func feedData(){
-//        self.getKpiForm()
+        self.getKpiForm()
         self.getUserScore()
-//        self.prepareDataForTable()
+        self.prepareDataForTable()
     }
     
 
     func getUserScore(){
         let headers: HTTPHeaders = ["id": "1"]
-        AF.request("http://192.168.111.96:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
+        AF.request("http://192.168.108.82:8081/kpi/user/year/2019",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON{ (response) in
             switch response.result{
             case .success :
                 do{
@@ -174,7 +175,7 @@ class UserHistoryViewController: UIViewController {
     }
     
     func getKpiForm(){
-        AF.request("http://192.168.111.96:8081/kpi/5", method: .get).responseJSON { (response) in
+        AF.request("http://192.168.108.82:8081/kpi/5", method: .get).responseJSON { (response) in
             switch response.result{
             case .success :
                 do{
@@ -270,6 +271,8 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
             cell.mTitle.text = self.mSubTopicArray[indexPath.section][indexPath.row]
             cell.mActual.text = "\(self.actualScores[indexPath.section][indexPath.row])"
             cell.mKPI.text = "\(self.ratingScores[indexPath.section][indexPath.row])"
+//            if self.remarks[indexPath.section][indexPath.row] == nil{cell.mRemark.text = "-"}else{cell.mRemark.text = "\(self.remarks[indexPath.section][indexPath.row])"}
+            cell.mRemark.text = "-"
             
             return cell
         }
@@ -278,6 +281,7 @@ extension UserHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if SelectedIndex == indexPath.row
+//            if tableView.tag == 100
         {
             if self.isCoolapce == false
             {
