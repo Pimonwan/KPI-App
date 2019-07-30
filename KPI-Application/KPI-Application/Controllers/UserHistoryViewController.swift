@@ -148,7 +148,7 @@ class UserHistoryViewController: UIViewController {
     }
     
     func feedData(){
-        self.getKpiForm()
+//        self.getKpiForm()
         self.getUserScore()
         self.prepareDataForTable()
     }
